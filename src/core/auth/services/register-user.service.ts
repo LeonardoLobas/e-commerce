@@ -1,7 +1,7 @@
 import { RegisterFormData } from "../schemas/register.schema";
-import { RegisterResponse } from "../types/auth.types";
+import { RegisterResponseDTO } from "../types/auth.types";
 
-export const registerUserService = async (data: RegisterFormData): Promise<RegisterResponse> => {
+export const registerUserService = async (data: RegisterFormData): Promise<RegisterResponseDTO> => {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/users`, {
         method: "POST",
         headers: {

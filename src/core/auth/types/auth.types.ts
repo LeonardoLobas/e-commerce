@@ -1,18 +1,7 @@
-export interface IUser {
-    id: number;
-    username: string;
-    email: string;
-    password: string;
+export interface LoginResponseDTO {
+    token: string;
 }
 
-export interface RegisterResponse {
+export interface RegisterResponseDTO {
     id: number;
-    username: string;
-    email: string;
-    password: string;
-}
-
-export interface ApiError {
-    message: string;
-    statusCode?: number;
 }
