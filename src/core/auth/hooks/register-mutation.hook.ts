@@ -17,7 +17,9 @@ export const useRegisterMutation = () => {
             });
             queryClient.invalidateQueries({ queryKey: ["users"] });
 
-            router.push("/login");
+            setTimeout(() => {
+                router.push("/login");
+            }, 3000);
         },
         onError: (error) => {
             toast.error("Erro ao criar conta", {

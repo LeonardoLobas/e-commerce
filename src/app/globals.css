@@ -125,3 +125,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Ensure sonner toasts are visible above other UI */
+[data-sonner-toaster] {
+  z-index: 9999 !important;
+}

@@ -1,9 +1,9 @@
+"use client";
 import { GalleryVerticalEnd } from "lucide-react";
 
 import Link from "next/link";
 import Image from "next/image";
 import { SignupForm } from "@/core/auth/components/signup-form";
-
 export default function RegisterPage() {
     return (
         <div className="grid min-h-svh lg:grid-cols-2">
@@ -24,7 +24,7 @@ export default function RegisterPage() {
             </div>
             <div className="bg-muted relative hidden lg:block">
                 <Image
-                    src="/placeholder.svg"
+                    src="/compras.jpg"
                     alt="Imagem de fundo"
                     fill
                     className="object-cover dark:brightness-[0.2] dark:grayscale"

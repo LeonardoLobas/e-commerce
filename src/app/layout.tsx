@@ -30,7 +30,7 @@ export default function RootLayout({
             <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
                 <Providers>
                     {children} <ReactQueryDevtools initialIsOpen={false} />
-                    <Toaster position="top-right" duration={3} richColors />
+                    <Toaster position="top-right" duration={3000} richColors />
                 </Providers>
             </body>
         </html>
