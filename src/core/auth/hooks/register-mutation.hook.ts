@@ -1,19 +1,28 @@
+import { toast } from "sonner";
 import { RegisterFormData } from "../schemas/register.schema";
 import { registerUserService } from "../services/register-user.service";
 import { RegisterResponse } from "../types/auth.types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 
 export const useRegisterMutation = () => {
     const queryClient = useQueryClient();
+    const router = useRouter();
     return useMutation<RegisterResponse, Error, RegisterFormData>({
         mutationKey: ["register"],
         mutationFn: registerUserService,
-        onSuccess: (data) => {
-            console.log("Usuario registrado com sucesso", data);
+        onSuccess: () => {
+            toast.success("Conta criada com sucesso!", {
+                description: "Você será redirecionado para fazer login.",
+            });
             queryClient.invalidateQueries({ queryKey: ["users"] });
+
+            router.push("/login");
         },
         onError: (error) => {
-            console.error("Erro ao registrar usuário:", error);
+            toast.error("Erro ao criar conta", {
+                description: error.message || "Tente novamente mais tarde.",
+            });
         },
     });
 };
