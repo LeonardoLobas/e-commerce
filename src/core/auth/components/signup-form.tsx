@@ -1,13 +1,11 @@
 "use client";
-
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { registerSchema, RegisterFormData } from "../schemas/register.schema";
+import { RegisterFormData } from "../schemas/register.schema";
 import { useRegisterMutation } from "../hooks/register-mutation.hook";
+import { useRegisterForm } from "../hooks/register-form.hook";
 
 export function SignupForm({ className, ...props }: React.ComponentProps<"form">) {
     const { mutate, isPending, isError, error } = useRegisterMutation();
@@ -17,9 +15,7 @@ export function SignupForm({ className, ...props }: React.ComponentProps<"form">
         handleSubmit,
         reset,
         formState: { errors },
-    } = useForm<RegisterFormData>({
-        resolver: zodResolver(registerSchema),
-    });
+    } = useRegisterForm();
 
     const onSubmit = (data: RegisterFormData) => {
         mutate(data, {
