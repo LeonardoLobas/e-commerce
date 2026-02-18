@@ -1,4 +1,5 @@
 import { LogoutButton } from "@/core/auth/components/logout-button";
+import Link from "next/link";
 
 export default function Home() {
     return (
@@ -10,25 +11,29 @@ export default function Home() {
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-2 pt-8">
-                    <button className="cursor-pointer rounded-lg border bg-card p-6 text-card-foreground shadow-sm">
+                    <Link
+                        href="/produtos"
+                        className="cursor-pointer rounded-lg border bg-card p-6 text-card-foreground shadow-sm transition-all hover:bg-accent hover:scale-105"
+                    >
                         <h3 className="text-lg font-semibold mb-2">Produtos</h3>
                         <p className="text-sm text-muted-foreground">Navegue pelo nosso catálogo de produtos</p>
-                    </button>
+                    </Link>
 
-                    <button className="rounded-lg cursor-pointer border bg-card p-6 text-card-foreground shadow-sm">
+                    <Link
+                        href="/carrinho"
+                        className="rounded-lg cursor-pointer border bg-card p-6 text-card-foreground shadow-sm transition-all hover:bg-accent hover:scale-105"
+                    >
                         <h3 className="text-lg font-semibold mb-2">Carrinho</h3>
                         <p className="text-sm text-muted-foreground">Veja seus itens selecionados</p>
-                    </button>
+                    </Link>
 
-                    <button className="rounded-lg cursor-pointer border bg-card p-6 text-card-foreground shadow-sm">
-                        <h3 className="text-lg font-semibold mb-2">Pedidos</h3>
-                        <p className="text-sm text-muted-foreground">Acompanhe seus pedidos</p>
-                    </button>
-
-                    <button className="rounded-lg cursor-pointer border bg-card p-6 text-card-foreground shadow-sm">
+                    <Link
+                        href="/perfil"
+                        className="rounded-lg cursor-pointer border bg-card p-6 text-card-foreground shadow-sm transition-all hover:bg-accent hover:scale-105"
+                    >
                         <h3 className="text-lg font-semibold mb-2">Perfil</h3>
                         <p className="text-sm text-muted-foreground">Gerencie suas informações</p>
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>

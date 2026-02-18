@@ -19,7 +19,7 @@ export function LogoutButton() {
             disabled={isPending}
             variant="outline"
             size="icon"
-            className="absolute top-4 right-4"
+            className="absolute top-4 right-4 cursor-pointer"
             title="Sair"
         >
             {isPending ? (
