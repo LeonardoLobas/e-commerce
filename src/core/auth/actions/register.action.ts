@@ -17,24 +17,19 @@ type ActionResult =
 export async function registerUserAction(formData: RegisterFormData): Promise<ActionResult> {
     try {
         const validatedData = registerSchema.parse(formData);
-
         const data = await registerUserService(validatedData);
-
         return {
             success: true,
             data,
         };
     } catch (error) {
         console.error("[Register Action Error]", error);
-
-        // Retorna erro tratado
         if (error instanceof Error) {
             return {
                 success: false,
                 error: error.message,
             };
         }
-
         return {
             success: false,
             error: "Erro inesperado ao criar conta",
