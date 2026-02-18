@@ -23,7 +23,6 @@ export async function registerUserAction(formData: RegisterFormData): Promise<Ac
             data,
         };
     } catch (error) {
-        console.error("[Register Action Error]", error);
         if (error instanceof Error) {
             return {
                 success: false,

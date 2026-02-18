@@ -1,0 +1,48 @@
+"use server";
+
+import { LoginFormData, loginSchema } from "../schemas/login.schema";
+import { authService } from "../services/auth.service";
+import { setAuthToken } from "../services/token.service";
+import { LoginResponseDTO } from "../types/auth.types";
+
+type ActionResult =
+    | {
+          success: true;
+          data: LoginResponseDTO;
+      }
+    | {
+          success: false;
+          error: string;
+      };
+
+export async function loginAction(data: LoginFormData): Promise<ActionResult> {
+    try {
+        const validatedFields = loginSchema.safeParse(data);
+
+        if (!validatedFields.success) {
+            return {
+                success: false,
+                error: "Dados inválidos. Verifique os campos e tente novamente.",
+            };
+        }
+        const response = await authService(validatedFields.data);
+
+        await setAuthToken(response.token);
+
+        return {
+            success: true,
+            data: response,
+        };
+    } catch (error) {
+        if (error instanceof Error) {
+            return {
+                success: false,
+                error: error.message,
+            };
+        }
+        return {
+            success: false,
+            error: "Erro inesperado ao autenticar conta",
+        };
+    }
+}
