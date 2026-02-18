@@ -2,18 +2,9 @@
 
 import { productsFindAllService } from "../services/get-all-products.service";
 import { ProductsListResponseDTO } from "../types/get-all-products.types";
+import { ActionResponse } from "@/shared/types/action-response.types";
 
-type ActionResult =
-    | {
-          success: true;
-          data: ProductsListResponseDTO;
-      }
-    | {
-          success: false;
-          error: string;
-      };
-
-export async function getAllProductsAction(): Promise<ActionResult> {
+export async function getAllProductsAction(): Promise<ActionResponse<ProductsListResponseDTO>> {
     try {
         const products = await productsFindAllService();
 

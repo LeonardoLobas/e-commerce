@@ -3,18 +3,9 @@
 import { registerSchema, type RegisterFormData } from "../schemas/register.schema";
 import { registerUserService } from "../services/register-user.service";
 import type { RegisterResponseDTO } from "../types/auth.types";
+import { ActionResponse } from "@/shared/types/action-response.types";
 
-type ActionResult =
-    | {
-          success: true;
-          data: RegisterResponseDTO;
-      }
-    | {
-          success: false;
-          error: string;
-      };
-
-export async function registerUserAction(formData: RegisterFormData): Promise<ActionResult> {
+export async function registerUserAction(formData: RegisterFormData): Promise<ActionResponse<RegisterResponseDTO>> {
     try {
         const validatedData = registerSchema.parse(formData);
         const data = await registerUserService(validatedData);

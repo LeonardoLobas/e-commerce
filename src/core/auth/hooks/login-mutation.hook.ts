@@ -12,11 +12,15 @@ export const useLoginMutation = () => {
     return useMutation<LoginResponseDTO, Error, LoginFormData>({
         mutationKey: ["login"],
 
-        mutationFn: async (data: LoginFormData) => {
+        mutationFn: async (data: LoginFormData): Promise<LoginResponseDTO> => {
             const result = await loginAction(data);
 
             if (!result.success) {
                 throw new Error(result.error);
+            }
+
+            if (!result.data) {
+                throw new Error("No data returned from login");
             }
 
             return result.data;

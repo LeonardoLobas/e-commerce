@@ -1,11 +1,26 @@
 "use client";
 
+import { useState } from "react";
 import { useProductsQuery } from "@/features/products/hooks/use-products-query.hook";
+import { ProductCard } from "@/features/products/components/product-card";
+import { ProductModal } from "@/features/products/components/product-modal";
 import { BackToHomeButton } from "@/components/ui/back-to-home-button";
-import Image from "next/image";
+import { ProductsResponseDTO } from "@/features/products/types/get-all-products.types";
 
 export default function ProductsPage() {
     const { data: products, isLoading, isError, error } = useProductsQuery();
+    const [selectedProductId, setSelectedProductId] = useState<number | null>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleOpenModal = (productId: number) => {
+        setSelectedProductId(productId);
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+        setSelectedProductId(null);
+    };
 
     return (
         <div className="min-h-screen p-8 relative">
@@ -29,46 +44,22 @@ export default function ProductsPage() {
                     </div>
                 )}
 
-                {products && products.length > 0 && (
+                {products && Array.isArray(products) && products.length > 0 && (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                        {products.map((product) => (
-                            <div
-                                key={product.id}
-                                className="rounded-lg border bg-card p-4 shadow-sm transition-all hover:shadow-lg hover:scale-105 cursor-pointer"
-                            >
-                                <div className="relative w-full h-48 mb-4">
-                                    <Image
-                                        src={product.image}
-                                        alt={product.title}
-                                        fill
-                                        className="object-contain"
-                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                    />
-                                </div>
-
-                                <div className="space-y-2">
-                                    <h3 className="font-semibold text-sm line-clamp-2 min-h-10">{product.title}</h3>
-
-                                    <p className="text-xs text-muted-foreground capitalize">{product.category}</p>
-
-                                    <div className="flex items-center justify-between pt-2">
-                                        <span className="text-2xl font-bold text-primary">${product.price.toFixed(2)}</span>
-                                        <button className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors text-sm">
-                                            Adicionar
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+                        {products.map((product: ProductsResponseDTO) => (
+                            <ProductCard key={product.id} product={product} onClick={() => handleOpenModal(product.id)} />
                         ))}
                     </div>
                 )}
 
-                {products && products.length === 0 && (
+                {products && Array.isArray(products) && products.length === 0 && (
                     <div className="rounded-lg border bg-card p-8 text-center">
                         <p className="text-muted-foreground">Nenhum produto encontrado</p>
                     </div>
                 )}
             </div>
+
+            <ProductModal productId={selectedProductId} isOpen={isModalOpen} onClose={handleCloseModal} />
         </div>
     );
 }

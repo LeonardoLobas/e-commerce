@@ -4,18 +4,9 @@ import { LoginFormData, loginSchema } from "../schemas/login.schema";
 import { authService } from "../services/auth.service";
 import { setAuthToken } from "../services/token.service";
 import { LoginResponseDTO } from "../types/auth.types";
+import { ActionResponse } from "@/shared/types/action-response.types";
 
-type ActionResult =
-    | {
-          success: true;
-          data: LoginResponseDTO;
-      }
-    | {
-          success: false;
-          error: string;
-      };
-
-export async function loginAction(data: LoginFormData): Promise<ActionResult> {
+export async function loginAction(data: LoginFormData): Promise<ActionResponse<LoginResponseDTO>> {
     try {
         const validatedFields = loginSchema.safeParse(data);
 

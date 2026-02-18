@@ -11,8 +11,8 @@ export const useProductsQuery = () => {
         queryFn: async () => {
             const result = await getAllProductsAction();
 
-            if (!result.success) {
-                throw new Error(result.error);
+            if (!result.success || !result.data) {
+                throw new Error(result.error || "Erro ao buscar produtos");
             }
 
             return result.data;
