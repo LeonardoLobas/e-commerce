@@ -1,13 +1,15 @@
 "use client";
 
 import { useProductsQuery } from "@/features/products/hooks/use-products-query.hook";
+import { BackToHomeButton } from "@/components/ui/back-to-home-button";
 import Image from "next/image";
 
 export default function ProductsPage() {
     const { data: products, isLoading, isError, error } = useProductsQuery();
 
     return (
-        <div className="min-h-screen p-8">
+        <div className="min-h-screen p-8 relative">
+            <BackToHomeButton />
             <div className="max-w-7xl mx-auto space-y-8">
                 <div className="space-y-4 text-center">
                     <h1 className="text-4xl font-bold tracking-tight">Produtos 📦</h1>

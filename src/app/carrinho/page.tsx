@@ -1,6 +1,9 @@
+import { BackToHomeButton } from "@/components/ui/back-to-home-button";
+
 export default function CarrinhoPage() {
     return (
-        <div className="flex min-h-screen flex-col items-center justify-center p-8">
+        <div className="flex min-h-screen flex-col items-center justify-center p-8 relative">
+            <BackToHomeButton />
             <div className="max-w-4xl w-full space-y-8">
                 <div className="space-y-4 text-center">
                     <h1 className="text-4xl font-bold tracking-tight">Carrinho de Compras 🛒</h1>
