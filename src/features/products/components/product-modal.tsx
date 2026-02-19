@@ -1,9 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { useSingleProductQuery } from "@/features/products/hooks/use-single-product-query.hook";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { X } from "lucide-react";
+import { X, Trash2, Pencil } from "lucide-react";
+import { DeleteProductModal } from "./delete-product-modal";
+import { EditProductModal } from "./edit-product-modal";
 
 interface ProductModalProps {
     productId: number | null;
@@ -13,8 +16,15 @@ interface ProductModalProps {
 
 export function ProductModal({ productId, isOpen, onClose }: ProductModalProps) {
     const { data: product, isLoading, isError } = useSingleProductQuery(productId || 0);
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
     if (!isOpen) return null;
+
+    const handleCloseAll = () => {
+        setIsDeleteModalOpen(false);
+        onClose();
+    };
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50" onClick={onClose}>
@@ -75,6 +85,22 @@ export function ProductModal({ productId, isOpen, onClose }: ProductModalProps) 
                                     <Button className="w-full" size="lg">
                                         🛒 Adicionar ao Carrinho
                                     </Button>
+                                    <Button
+                                        variant="outline"
+                                        className="w-full hover:bg-blue-50"
+                                        onClick={() => setIsEditModalOpen(true)}
+                                    >
+                                        <Pencil className="w-4 h-4 mr-2" />
+                                        Editar Produto
+                                    </Button>
+                                    <Button
+                                        variant="destructive"
+                                        className="w-full hover:bg-red-700"
+                                        onClick={() => setIsDeleteModalOpen(true)}
+                                    >
+                                        <Trash2 className="w-4 h-4 mr-2" />
+                                        Deletar Produto
+                                    </Button>
                                     <Button variant="outline" className="w-full" onClick={onClose}>
                                         Fechar
                                     </Button>
@@ -84,6 +110,31 @@ export function ProductModal({ productId, isOpen, onClose }: ProductModalProps) 
                     )}
                 </div>
             </div>
+
+            {product && (
+                <DeleteProductModal
+                    isOpen={isDeleteModalOpen}
+                    onClose={() => setIsDeleteModalOpen(false)}
+                    productId={product.id}
+                    productTitle={product.title}
+                    onDeleteSuccess={handleCloseAll}
+                />
+            )}
+
+            {product && (
+                <EditProductModal
+                    isOpen={isEditModalOpen}
+                    onClose={() => setIsEditModalOpen(false)}
+                    productId={product.id}
+                    defaultValues={{
+                        title: product.title,
+                        price: product.price,
+                        description: product.description,
+                        category: product.category,
+                        image: product.image,
+                    }}
+                />
+            )}
         </div>
     );
 }
