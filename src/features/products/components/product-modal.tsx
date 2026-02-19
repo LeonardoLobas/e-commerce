@@ -7,6 +7,7 @@ import Image from "next/image";
 import { X, Trash2, Pencil } from "lucide-react";
 import { DeleteProductModal } from "./delete-product-modal";
 import { EditProductModal } from "./edit-product-modal";
+import { formatCurrency } from "@/lib/formatCurrency";
 
 interface ProductModalProps {
     productId: number | null;
@@ -73,7 +74,7 @@ export function ProductModal({ productId, isOpen, onClose }: ProductModalProps) 
                                 </div>
 
                                 <div className="py-4 border-y">
-                                    <span className="text-3xl font-bold text-primary">${product.price.toFixed(2)}</span>
+                                    <span className="text-3xl font-bold text-primary">{formatCurrency(product.price)}</span>
                                 </div>
 
                                 <div>

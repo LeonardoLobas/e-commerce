@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { ProductsResponseDTO } from "../types/get-all-products.types";
+import { formatCurrency } from "@/lib/formatCurrency";
 
 interface ProductCardProps {
     product: ProductsResponseDTO;
@@ -30,7 +31,7 @@ export function ProductCard({ product, onClick }: ProductCardProps) {
                 <p className="text-xs text-muted-foreground capitalize">{product.category}</p>
 
                 <div className="flex items-center justify-between pt-2">
-                    <span className="text-2xl font-bold text-primary">${product.price.toFixed(2)}</span>
+                    <span className="text-2xl font-bold text-primary">{formatCurrency(product.price)}</span>
                 </div>
             </div>
         </button>

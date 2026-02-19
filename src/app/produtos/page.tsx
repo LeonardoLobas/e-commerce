@@ -4,13 +4,17 @@ import { useState } from "react";
 import { useProductsQuery } from "@/features/products/hooks/use-products-query.hook";
 import { ProductCard } from "@/features/products/components/product-card";
 import { ProductModal } from "@/features/products/components/product-modal";
+import { CreateProductModal } from "@/features/products/components/create-product-modal";
 import { BackToHomeButton } from "@/components/ui/back-to-home-button";
+import { Button } from "@/components/ui/button";
 import { ProductsResponseDTO } from "@/features/products/types/get-all-products.types";
+import { Plus } from "lucide-react";
 
 export default function ProductsPage() {
     const { data: products, isLoading, isError, error } = useProductsQuery();
     const [selectedProductId, setSelectedProductId] = useState<number | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
     const handleOpenModal = (productId: number) => {
         setSelectedProductId(productId);
@@ -27,7 +31,13 @@ export default function ProductsPage() {
             <BackToHomeButton />
             <div className="max-w-7xl mx-auto space-y-8">
                 <div className="space-y-4 text-center">
-                    <h1 className="text-4xl font-bold tracking-tight">Produtos 📦</h1>
+                    <div className="flex items-center justify-center gap-4">
+                        <h1 className="text-4xl font-bold tracking-tight">Produtos 📦</h1>
+                        <Button onClick={() => setIsCreateModalOpen(true)} size="lg" className="gap-2">
+                            <Plus className="w-5 h-5" />
+                            Novo Produto
+                        </Button>
+                    </div>
                     <p className="text-muted-foreground">Navegue pelo nosso catálogo de produtos</p>
                 </div>
 
@@ -60,6 +70,7 @@ export default function ProductsPage() {
             </div>
 
             <ProductModal productId={selectedProductId} isOpen={isModalOpen} onClose={handleCloseModal} />
+            <CreateProductModal isOpen={isCreateModalOpen} onClose={() => setIsCreateModalOpen(false)} />
         </div>
     );
 }
