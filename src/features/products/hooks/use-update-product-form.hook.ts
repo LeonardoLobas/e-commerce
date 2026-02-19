@@ -5,12 +5,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { UpdateProductFormData, updateProductSchema } from "../schemas/update-product.schema";
 
 interface UseUpdateProductFormProps {
-    defaultValues: UpdateProductFormData;
+    defaultValues?: UpdateProductFormData;
 }
 
-export const useUpdateProductForm = ({ defaultValues }: UseUpdateProductFormProps): UseFormReturn<UpdateProductFormData> => {
+export const useUpdateProductForm = ({ defaultValues }: UseUpdateProductFormProps = {}): UseFormReturn<UpdateProductFormData> => {
     return useForm<UpdateProductFormData>({
         resolver: zodResolver(updateProductSchema),
         defaultValues,
+        mode: "onChange",
     });
 };

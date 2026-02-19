@@ -129,7 +129,7 @@ export function ProductModal({ productId, isOpen, onClose }: ProductModalProps) 
                     productId={product.id}
                     defaultValues={{
                         title: product.title,
-                        price: product.price,
+                        price: String(product.price),
                         description: product.description,
                         category: product.category,
                         image: product.image,

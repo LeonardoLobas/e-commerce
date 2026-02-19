@@ -19,7 +19,10 @@ export const updateProductAction = async (
     }
 
     try {
-        const result = await updateProductService(id, validatedFields.data);
+        const result = await updateProductService(id, {
+            ...validatedFields.data,
+            price: Number(validatedFields.data.price),
+        });
         return {
             success: true,
             data: result,
