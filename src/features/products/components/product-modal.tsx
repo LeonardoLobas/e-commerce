@@ -7,6 +7,7 @@ import Image from "next/image";
 import { X, Trash2, Pencil } from "lucide-react";
 import { DeleteProductModal } from "./delete-product-modal";
 import { EditProductModal } from "./edit-product-modal";
+import { AddToCartButton } from "@/features/carts/components/add-to-cart-button";
 import { formatCurrency } from "@/lib/formatCurrency";
 
 interface ProductModalProps {
@@ -83,9 +84,7 @@ export function ProductModal({ productId, isOpen, onClose }: ProductModalProps) 
                                 </div>
 
                                 <div className="space-y-3 pt-4">
-                                    <Button className="w-full" size="lg">
-                                        🛒 Adicionar ao Carrinho
-                                    </Button>
+                                    <AddToCartButton productId={product.id} userId={1} />
                                     <Button
                                         variant="outline"
                                         className="w-full hover:bg-blue-50"
