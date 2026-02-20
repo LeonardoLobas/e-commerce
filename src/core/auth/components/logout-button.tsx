@@ -17,14 +17,7 @@ export function LogoutButton() {
     };
 
     return (
-        <Button
-            onClick={handleLogout}
-            disabled={isPending}
-            variant="outline"
-            size="icon"
-            className="absolute top-4 right-4 cursor-pointer"
-            title="Sair"
-        >
+        <Button onClick={handleLogout} disabled={isPending} variant="outline" size="icon" className="cursor-pointer" title="Sair">
             {isPending ? (
                 <span className="text-lg">⏳</span>
             ) : (
