@@ -4,10 +4,12 @@ import { loginAction } from "../actions/auth.action";
 import { LoginResponseDTO } from "../types/auth.types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
+import { useAuth } from "./use-auth.hook";
 
 export const useLoginMutation = () => {
     const queryClient = useQueryClient();
     const router = useRouter();
+    const { refreshUser } = useAuth();
 
     return useMutation<LoginResponseDTO, Error, LoginFormData>({
         mutationKey: ["login"],
@@ -26,7 +28,9 @@ export const useLoginMutation = () => {
             return result.data;
         },
 
-        onSuccess: () => {
+        onSuccess: async () => {
+            await refreshUser();
+
             toast.success("Login realizado com sucesso!", {
                 description: "Você será redirecionado.",
             });

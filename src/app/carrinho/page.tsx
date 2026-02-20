@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { BackToHomeButton } from "@/components/ui/back-to-home-button";
 import { Button } from "@/components/ui/button";
 import { useCartsByUserQuery } from "@/features/carts/hooks/use-carts-query.hook";
@@ -9,21 +8,13 @@ import { useDeleteCartMutation } from "@/features/carts/hooks/use-delete-cart-mu
 import { CartItem } from "@/features/carts/components/cart-item";
 import { ShoppingBag } from "lucide-react";
 import Link from "next/link";
-import { getCurrentUserIdAction } from "@/core/auth/actions/get-current-user-id.action";
+import { useAuth } from "@/core/auth/hooks/use-auth.hook";
 
 export default function CarrinhoPage() {
-    const [userId, setUserId] = useState<number | null>(null);
+    const { userId, isLoading: isLoadingAuth } = useAuth();
     const { data: carts, isLoading, isError } = useCartsByUserQuery(userId as number);
     const updateCartMutation = useUpdateCartMutation();
     const deleteCartMutation = useDeleteCartMutation(userId as number);
-
-    useEffect(() => {
-        const fetchUserId = async () => {
-            const id = await getCurrentUserIdAction();
-            setUserId(id);
-        };
-        fetchUserId();
-    }, []);
 
     const activeCart = carts?.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())[0];
 
@@ -76,7 +67,7 @@ export default function CarrinhoPage() {
                     <p className="text-muted-foreground">Gerencie seus itens selecionados</p>
                 </div>
 
-                {isLoading && (
+                {(isLoading || isLoadingAuth) && (
                     <div className="text-center py-12">
                         <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
                         <p className="mt-4 text-muted-foreground">Carregando carrinho...</p>
