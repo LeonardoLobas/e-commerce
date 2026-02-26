@@ -10,7 +10,7 @@ export default function Home() {
 
                 <div className="grid gap-4 sm:grid-cols-2 pt-8">
                     <Link
-                        href="/produtos"
+                        href="/products"
                         className="cursor-pointer rounded-lg border bg-card p-6 text-card-foreground shadow-sm transition-all hover:bg-accent hover:scale-105"
                     >
                         <h3 className="text-lg font-semibold mb-2">Produtos</h3>
@@ -18,7 +18,7 @@ export default function Home() {
                     </Link>
 
                     <Link
-                        href="/carrinho"
+                        href="/cart"
                         className="rounded-lg cursor-pointer border bg-card p-6 text-card-foreground shadow-sm transition-all hover:bg-accent hover:scale-105"
                     >
                         <h3 className="text-lg font-semibold mb-2">Carrinho</h3>
@@ -26,11 +26,11 @@ export default function Home() {
                     </Link>
 
                     <Link
-                        href="/perfil"
+                        href="/users"
                         className="rounded-lg cursor-pointer border bg-card p-6 text-card-foreground shadow-sm transition-all hover:bg-accent hover:scale-105"
                     >
-                        <h3 className="text-lg font-semibold mb-2">Perfil</h3>
-                        <p className="text-sm text-muted-foreground">Gerencie suas informações</p>
+                        <h3 className="text-lg font-semibold mb-2">Usuários</h3>
+                        <p className="text-sm text-muted-foreground">Gerencie os usuários do sistema</p>
                     </Link>
                 </div>
             </div>

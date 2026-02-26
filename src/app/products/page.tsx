@@ -5,7 +5,6 @@ import { useProductsQuery } from "@/features/products/hooks/use-products-query.h
 import { ProductCard } from "@/features/products/components/product-card";
 import { ProductModal } from "@/features/products/components/product-modal";
 import { CreateProductModal } from "@/features/products/components/create-product-modal";
-import { BackToHomeButton } from "@/components/ui/back-to-home-button";
 import { Button } from "@/components/ui/button";
 import { ProductsResponseDTO } from "@/features/products/types/get-all-products.types";
 import { Plus } from "lucide-react";
@@ -27,8 +26,7 @@ export default function ProductsPage() {
     };
 
     return (
-        <div className="min-h-screen p-8 relative">
-            <BackToHomeButton />
+        <div className="min-h-screen p-8">
             <div className="max-w-7xl mx-auto space-y-8">
                 <div className="space-y-4 text-center">
                     <div className="flex items-center justify-center gap-4">

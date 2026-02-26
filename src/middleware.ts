@@ -5,7 +5,7 @@ const TOKEN_NAME = "auth_token";
 
 const publicRoutes = ["/login", "/register"];
 
-const protectedRoutes = ["/", "/produtos", "/carrinho", "/perfil"];
+const protectedRoutes = ["/", "/products", "/cart", "/users"];
 
 export function middleware(request: NextRequest) {
     const token = request.cookies.get(TOKEN_NAME);

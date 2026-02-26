@@ -1,6 +1,5 @@
 "use client";
 
-import { BackToHomeButton } from "@/components/ui/back-to-home-button";
 import { Button } from "@/components/ui/button";
 import { useCartsByUserQuery } from "@/features/carts/hooks/use-carts-query.hook";
 import { useUpdateCartMutation } from "@/features/carts/hooks/use-update-cart-mutation.hook";
@@ -59,8 +58,7 @@ export default function CarrinhoPage() {
     };
 
     return (
-        <div className="min-h-screen p-8 relative">
-            <BackToHomeButton />
+        <div className="min-h-screen p-8">
             <div className="max-w-6xl mx-auto space-y-8">
                 <div className="space-y-4 text-center">
                     <h1 className="text-4xl font-bold tracking-tight">Carrinho de Compras 🛒</h1>
@@ -85,7 +83,7 @@ export default function CarrinhoPage() {
                         <ShoppingBag className="w-16 h-16 mx-auto text-muted-foreground" />
                         <p className="text-xl font-semibold">Seu carrinho está vazio</p>
                         <p className="text-muted-foreground">Adicione produtos para começar suas compras</p>
-                        <Link href="/produtos">
+                        <Link href="/products">
                             <Button className="mt-4">Ver Produtos</Button>
                         </Link>
                     </div>
