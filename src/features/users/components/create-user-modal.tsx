@@ -64,7 +64,7 @@ export const CreateUserModal = ({ isOpen, onClose }: CreateUserModalProps) => {
                                 placeholder="email@example.com"
                                 disabled={createMutation.isPending}
                             />
-                            {errors.email && <p className="text-sm text-red-500 mt-1">{errors.email.message}</p>}
+                            {errors.email && <p className="text-sm text-destructive mt-1">{errors.email.message}</p>}
                         </div>
 
                         <div>
@@ -75,7 +75,7 @@ export const CreateUserModal = ({ isOpen, onClose }: CreateUserModalProps) => {
                                 placeholder="username"
                                 disabled={createMutation.isPending}
                             />
-                            {errors.username && <p className="text-sm text-red-500 mt-1">{errors.username.message}</p>}
+                            {errors.username && <p className="text-sm text-destructive mt-1">{errors.username.message}</p>}
                         </div>
 
                         <div>
@@ -87,7 +87,7 @@ export const CreateUserModal = ({ isOpen, onClose }: CreateUserModalProps) => {
                                 placeholder="******"
                                 disabled={createMutation.isPending}
                             />
-                            {errors.password && <p className="text-sm text-red-500 mt-1">{errors.password.message}</p>}
+                            {errors.password && <p className="text-sm text-destructive mt-1">{errors.password.message}</p>}
                         </div>
 
                         <div>
@@ -98,7 +98,7 @@ export const CreateUserModal = ({ isOpen, onClose }: CreateUserModalProps) => {
                                 placeholder="(11) 99999-9999"
                                 disabled={createMutation.isPending}
                             />
-                            {errors.phone && <p className="text-sm text-red-500 mt-1">{errors.phone.message}</p>}
+                            {errors.phone && <p className="text-sm text-destructive mt-1">{errors.phone.message}</p>}
                         </div>
 
                         <div>
@@ -109,7 +109,7 @@ export const CreateUserModal = ({ isOpen, onClose }: CreateUserModalProps) => {
                                 placeholder="João"
                                 disabled={createMutation.isPending}
                             />
-                            {errors.firstname && <p className="text-sm text-red-500 mt-1">{errors.firstname.message}</p>}
+                            {errors.firstname && <p className="text-sm text-destructive mt-1">{errors.firstname.message}</p>}
                         </div>
 
                         <div>
@@ -120,13 +120,13 @@ export const CreateUserModal = ({ isOpen, onClose }: CreateUserModalProps) => {
                                 placeholder="Silva"
                                 disabled={createMutation.isPending}
                             />
-                            {errors.lastname && <p className="text-sm text-red-500 mt-1">{errors.lastname.message}</p>}
+                            {errors.lastname && <p className="text-sm text-destructive mt-1">{errors.lastname.message}</p>}
                         </div>
 
                         <div>
                             <Label htmlFor="city">Cidade</Label>
                             <Input id="city" {...register("city")} placeholder="São Paulo" disabled={createMutation.isPending} />
-                            {errors.city && <p className="text-sm text-red-500 mt-1">{errors.city.message}</p>}
+                            {errors.city && <p className="text-sm text-destructive mt-1">{errors.city.message}</p>}
                         </div>
 
                         <div>
@@ -137,13 +137,13 @@ export const CreateUserModal = ({ isOpen, onClose }: CreateUserModalProps) => {
                                 placeholder="Rua Principal"
                                 disabled={createMutation.isPending}
                             />
-                            {errors.street && <p className="text-sm text-red-500 mt-1">{errors.street.message}</p>}
+                            {errors.street && <p className="text-sm text-destructive mt-1">{errors.street.message}</p>}
                         </div>
 
                         <div>
                             <Label htmlFor="number">Número</Label>
                             <Input id="number" {...register("number")} placeholder="123" disabled={createMutation.isPending} />
-                            {errors.number && <p className="text-sm text-red-500 mt-1">{errors.number.message}</p>}
+                            {errors.number && <p className="text-sm text-destructive mt-1">{errors.number.message}</p>}
                         </div>
 
                         <div>
@@ -154,19 +154,19 @@ export const CreateUserModal = ({ isOpen, onClose }: CreateUserModalProps) => {
                                 placeholder="12345-678"
                                 disabled={createMutation.isPending}
                             />
-                            {errors.zipcode && <p className="text-sm text-red-500 mt-1">{errors.zipcode.message}</p>}
+                            {errors.zipcode && <p className="text-sm text-destructive mt-1">{errors.zipcode.message}</p>}
                         </div>
 
                         <div>
                             <Label htmlFor="lat">Latitude (opcional)</Label>
                             <Input id="lat" {...register("lat")} placeholder="-23.5505" disabled={createMutation.isPending} />
-                            {errors.lat && <p className="text-sm text-red-500 mt-1">{errors.lat.message}</p>}
+                            {errors.lat && <p className="text-sm text-destructive mt-1">{errors.lat.message}</p>}
                         </div>
 
                         <div>
                             <Label htmlFor="long">Longitude (opcional)</Label>
                             <Input id="long" {...register("long")} placeholder="-46.6333" disabled={createMutation.isPending} />
-                            {errors.long && <p className="text-sm text-red-500 mt-1">{errors.long.message}</p>}
+                            {errors.long && <p className="text-sm text-destructive mt-1">{errors.long.message}</p>}
                         </div>
                     </div>
 

@@ -47,8 +47,8 @@ export default function ProductsPage() {
                 )}
 
                 {isError && (
-                    <div className="rounded-lg border border-red-500 bg-red-50 dark:bg-red-950 p-8 text-center">
-                        <p className="text-red-600 dark:text-red-400">Erro ao carregar produtos: {error?.message}</p>
+                    <div className="rounded-lg border border-destructive bg-destructive/10 p-8 text-center">
+                        <p className="text-destructive">Erro ao carregar produtos: {error?.message}</p>
                     </div>
                 )}
 

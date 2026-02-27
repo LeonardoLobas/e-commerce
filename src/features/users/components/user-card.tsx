@@ -46,7 +46,7 @@ export function UserCard({ user, onClick, onEdit, onDelete }: UserCardProps) {
                                     e.stopPropagation();
                                     onEdit();
                                 }}
-                                className="flex-1 px-3 py-2 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+                                className="flex-1 px-3 py-2 text-sm bg-primary text-white rounded hover:bg-primary/90 transition-colors"
                             >
                                 Editar
                             </button>
@@ -57,7 +57,7 @@ export function UserCard({ user, onClick, onEdit, onDelete }: UserCardProps) {
                                     e.stopPropagation();
                                     onDelete();
                                 }}
-                                className="flex-1 px-3 py-2 text-sm bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
+                                className="flex-1 px-3 py-2 text-sm bg-destructive text-white rounded hover:bg-destructive/90 transition-colors"
                             >
                                 Deletar
                             </button>

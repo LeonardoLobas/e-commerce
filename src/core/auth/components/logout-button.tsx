@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { logoutAction } from "../actions/logout.action";
 import { useTransition } from "react";
 import { useAuth } from "../hooks/use-auth.hook";
@@ -17,7 +16,12 @@ export function LogoutButton() {
     };
 
     return (
-        <Button onClick={handleLogout} disabled={isPending} variant="outline" size="icon" className="cursor-pointer" title="Sair">
+        <button
+            onClick={handleLogout}
+            disabled={isPending}
+            className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-muted-foreground cursor-pointer rounded-md transition-all duration-200 hover:bg-accent hover:text-accent-foreground disabled:opacity-50 disabled:cursor-not-allowed"
+            title="Sair"
+        >
             {isPending ? (
                 <span className="text-lg">⏳</span>
             ) : (
@@ -37,6 +41,7 @@ export function LogoutButton() {
                     <line x1="21" y1="12" x2="9" y2="12" />
                 </svg>
             )}
-        </Button>
+            <span>Sair</span>
+        </button>
     );
 }

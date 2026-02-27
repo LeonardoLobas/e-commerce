@@ -72,7 +72,7 @@ export const CartItem = ({ item, onUpdateQuantity, onRemove }: CartItemProps) =>
                 variant="ghost"
                 size="icon"
                 onClick={() => onRemove(item.productId)}
-                className="text-red-500 hover:text-red-700 hover:bg-red-50"
+                className="text-destructive hover:text-destructive/80 hover:bg-destructive/10"
             >
                 <Trash2 className="h-5 w-5" />
             </Button>

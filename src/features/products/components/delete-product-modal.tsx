@@ -51,7 +51,7 @@ export const DeleteProductModal = ({ isOpen, onClose, productId, productTitle, o
                     </button>
                     <button
                         onClick={handleDelete}
-                        className="px-4 py-2 rounded-md bg-red-600 text-white hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="px-4 py-2 rounded-md bg-destructive text-white hover:bg-destructive/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                         disabled={deleteMutation.isPending}
                     >
                         {deleteMutation.isPending ? "Deletando..." : "Deletar"}

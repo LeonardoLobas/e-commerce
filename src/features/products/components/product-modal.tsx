@@ -53,7 +53,7 @@ export function ProductModal({ productId, isOpen, onClose }: ProductModalProps) 
 
                     {isError && (
                         <div className="text-center py-12">
-                            <p className="text-red-500">Erro ao carregar produto</p>
+                            <p className="text-destructive">Erro ao carregar produto</p>
                         </div>
                     )}
 
@@ -87,7 +87,7 @@ export function ProductModal({ productId, isOpen, onClose }: ProductModalProps) 
                                     <AddToCartButton productId={product.id} userId={1} />
                                     <Button
                                         variant="outline"
-                                        className="w-full hover:bg-blue-50"
+                                        className="w-full hover:bg-accent"
                                         onClick={() => setIsEditModalOpen(true)}
                                     >
                                         <Pencil className="w-4 h-4 mr-2" />
@@ -95,7 +95,7 @@ export function ProductModal({ productId, isOpen, onClose }: ProductModalProps) 
                                     </Button>
                                     <Button
                                         variant="destructive"
-                                        className="w-full hover:bg-red-700"
+                                        className="w-full bg-destructive hover:bg-destructive/90"
                                         onClick={() => setIsDeleteModalOpen(true)}
                                     >
                                         <Trash2 className="w-4 h-4 mr-2" />

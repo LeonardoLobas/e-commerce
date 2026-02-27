@@ -28,7 +28,7 @@ export const UsersList = () => {
     if (error) {
         return (
             <div className="flex items-center justify-center min-h-100">
-                <p className="text-lg text-red-500">Erro ao carregar usuários: {error.message}</p>
+                <p className="text-lg text-destructive">Erro ao carregar usuários: {error.message}</p>
             </div>
         );
     }

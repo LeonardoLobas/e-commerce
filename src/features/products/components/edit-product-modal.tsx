@@ -60,7 +60,7 @@ export const EditProductModal = ({ isOpen, onClose, productId, defaultValues }: 
                             placeholder="Nome do produto"
                             disabled={updateMutation.isPending}
                         />
-                        {errors.title && <p className="text-sm text-red-500 mt-1">{errors.title.message}</p>}
+                        {errors.title && <p className="text-sm text-destructive mt-1">{errors.title.message}</p>}
                     </div>
 
                     <div>
@@ -73,7 +73,7 @@ export const EditProductModal = ({ isOpen, onClose, productId, defaultValues }: 
                             placeholder="0.00"
                             disabled={updateMutation.isPending}
                         />
-                        {errors.price && <p className="text-sm text-red-500 mt-1">{errors.price.message}</p>}
+                        {errors.price && <p className="text-sm text-destructive mt-1">{errors.price.message}</p>}
                     </div>
 
                     <div>
@@ -84,7 +84,7 @@ export const EditProductModal = ({ isOpen, onClose, productId, defaultValues }: 
                             placeholder="Categoria do produto"
                             disabled={updateMutation.isPending}
                         />
-                        {errors.category && <p className="text-sm text-red-500 mt-1">{errors.category.message}</p>}
+                        {errors.category && <p className="text-sm text-destructive mt-1">{errors.category.message}</p>}
                     </div>
 
                     <div>
@@ -96,13 +96,13 @@ export const EditProductModal = ({ isOpen, onClose, productId, defaultValues }: 
                             disabled={updateMutation.isPending}
                             className="flex min-h-30 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                         />
-                        {errors.description && <p className="text-sm text-red-500 mt-1">{errors.description.message}</p>}
+                        {errors.description && <p className="text-sm text-destructive mt-1">{errors.description.message}</p>}
                     </div>
 
                     <div>
                         <Label htmlFor="image">URL da Imagem (opcional)</Label>
                         <Input id="image" {...register("image")} placeholder="https://..." disabled={updateMutation.isPending} />
-                        {errors.image && <p className="text-sm text-red-500 mt-1">{errors.image.message}</p>}
+                        {errors.image && <p className="text-sm text-destructive mt-1">{errors.image.message}</p>}
                     </div>
 
                     <div className="flex gap-4 justify-end pt-4">
