@@ -23,7 +23,7 @@ export function HeroCarousel() {
     };
 
     return (
-        <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden rounded-2xl bg-muted/20">
+        <div className="relative w-full h-100 md:h-125 lg:h-150 overflow-hidden rounded-2xl bg-muted/20">
             {/* Imagem Principal com Animação */}
             <AnimatePresence mode="wait">
                 <motion.div
@@ -59,7 +59,7 @@ export function HeroCarousel() {
             </div>
 
             {/* Gradiente para melhor legibilidade dos dots */}
-            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
+            <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-black/30 to-transparent pointer-events-none" />
         </div>
     );
 }
