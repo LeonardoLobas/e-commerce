@@ -123,7 +123,7 @@ export function Footer() {
                         <h3 className="font-semibold text-lg">Contato</h3>
                         <ul className="space-y-3">
                             <li className="flex items-start gap-3">
-                                <Mail className="h-5 w-5 text-brand-primary mt-0.5 flex-shrink-0" />
+                                <Mail className="h-5 w-5 text-brand-primary mt-0.5 shrink-0" />
                                 <div>
                                     <p className="text-sm font-medium">Email</p>
                                     <a
@@ -135,7 +135,7 @@ export function Footer() {
                                 </div>
                             </li>
                             <li className="flex items-start gap-3">
-                                <Phone className="h-5 w-5 text-brand-primary mt-0.5 flex-shrink-0" />
+                                <Phone className="h-5 w-5 text-brand-primary mt-0.5 shrink-0" />
                                 <div>
                                     <p className="text-sm font-medium">Telefone</p>
                                     <a
@@ -147,7 +147,7 @@ export function Footer() {
                                 </div>
                             </li>
                             <li className="flex items-start gap-3">
-                                <MapPin className="h-5 w-5 text-brand-primary mt-0.5 flex-shrink-0" />
+                                <MapPin className="h-5 w-5 text-brand-primary mt-0.5 shrink-0" />
                                 <div>
                                     <p className="text-sm font-medium">Endereço</p>
                                     <p className="text-sm text-muted-foreground">São Paulo, SP</p>
