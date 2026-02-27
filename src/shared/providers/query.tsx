@@ -6,6 +6,7 @@ import { ReactNode, useState } from "react";
 import { AuthProvider } from "@/core/auth/context/auth-context";
 import { Toaster } from "sonner";
 import { Header } from "@/components/ui/header";
+import { Footer } from "@/components/ui/footer";
 
 export function Providers({ children }: { children: ReactNode }) {
     const [queryClient] = useState(() => new QueryClient());
@@ -13,8 +14,11 @@ export function Providers({ children }: { children: ReactNode }) {
     return (
         <QueryClientProvider client={queryClient}>
             <AuthProvider>
-                <Header />
-                {children}
+                <div className="flex flex-col min-h-screen">
+                    <Header />
+                    <main className="flex-1">{children}</main>
+                    <Footer />
+                </div>
                 <ReactQueryDevtools initialIsOpen={false} />
                 <Toaster position="top-right" duration={3000} richColors />
             </AuthProvider>

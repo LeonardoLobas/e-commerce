@@ -50,7 +50,7 @@ export function HeroCarousel() {
                     <button
                         key={index}
                         onClick={() => handleDotClick(index)}
-                        className={`h-2 rounded-full transition-all duration-300 ${
+                        className={`h-2 rounded-full transition-all cursor-pointer duration-300 ${
                             index === currentIndex ? "w-8 bg-white" : "w-2 bg-white/50 hover:bg-white/75"
                         }`}
                         aria-label={`Ir para imagem ${index + 1}`}
