@@ -23,7 +23,7 @@ export function HeroCarousel() {
     };
 
     return (
-        <div className="relative w-full h-[500px] lg:h-[600px] overflow-hidden rounded-2xl bg-muted/20">
+        <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden rounded-2xl bg-muted/20">
             {/* Imagem Principal com Animação */}
             <AnimatePresence mode="wait">
                 <motion.div

@@ -26,8 +26,8 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-            <body className={`${dmSans.variable} ${playfair.variable} antialiased`}>
+        <html lang="en" className="overflow-x-hidden">
+            <body className={`${dmSans.variable} ${playfair.variable} antialiased overflow-x-hidden`}>
                 <Providers>{children}</Providers>
             </body>
         </html>

@@ -3,10 +3,10 @@ import { HeroCarousel } from "@/components/ui/hero-carousel";
 
 export default function Home() {
     return (
-        <div className="flex min-h-screen items-center p-8 md:p-16 lg:p-24">
-            <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="flex min-h-screen items-center p-4 md:p-8 lg:p-16 xl:p-24">
+            <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
                 {/* Conteúdo Hero - Lado Esquerdo */}
-                <div className="max-w-2xl space-y-8">
+                <div className="max-w-2xl space-y-6 md:space-y-8">
                     {/* Badge */}
                     <div className="inline-flex items-center gap-2">
                         <span className="h-2 w-2 rounded-full bg-brand-primary"></span>
@@ -15,8 +15,10 @@ export default function Home() {
 
                     {/* Hero Title */}
                     <div className="space-y-2">
-                        <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-foreground leading-tight">Sua loja.</h1>
-                        <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold text-brand-primary italic leading-tight">
+                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-foreground leading-tight break-words">
+                            Sua loja.
+                        </h1>
+                        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-brand-primary italic leading-tight break-words">
                             Do seu jeito.
                         </h2>
                     </div>
@@ -59,7 +61,8 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div className="w-full lg:w-auto">
+                {/* Carrossel - Lado Direito */}
+                <div className="w-full">
                     <HeroCarousel />
                 </div>
             </div>

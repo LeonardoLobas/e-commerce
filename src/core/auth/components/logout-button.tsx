@@ -19,7 +19,7 @@ export function LogoutButton() {
         <button
             onClick={handleLogout}
             disabled={isPending}
-            className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-muted-foreground cursor-pointer rounded-md transition-all duration-200 hover:bg-accent hover:text-accent-foreground disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex items-center gap-1.5 px-2 sm:px-3 md:px-4 py-2 text-sm font-medium text-muted-foreground cursor-pointer rounded-md transition-all duration-200 hover:bg-accent hover:text-accent-foreground disabled:opacity-50 disabled:cursor-not-allowed"
             title="Sair"
         >
             {isPending ? (
@@ -41,7 +41,7 @@ export function LogoutButton() {
                     <line x1="21" y1="12" x2="9" y2="12" />
                 </svg>
             )}
-            <span>Sair</span>
+            <span className="hidden md:inline">Sair</span>
         </button>
     );
 }
