@@ -39,7 +39,7 @@ export function Header() {
                 <div className="flex items-center gap-2 sm:gap-4">
                     <Link href="/" className="flex items-center gap-2 font-semibold text-lg hover:opacity-80 transition-opacity">
                         <ShoppingCart className="text-brand-primary h-5 w-5 sm:h-6 sm:w-6" />
-                        <h1 className=" text-xl sm:text-2xl sm:inline">E-commerce</h1>
+                        <h1 className=" hidden sm:text-2xl sm:inline">E-commerce</h1>
                     </Link>
                 </div>
 
@@ -64,7 +64,7 @@ export function Header() {
                                     href="/cart"
                                     className={cn(
                                         "flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-md transition-all duration-200",
-                                        pathname === "/carts"
+                                        pathname === "/cart"
                                             ? "text-foreground bg-accent"
                                             : "text-muted-foreground hover:bg-accent hover:text-accent-foreground",
                                     )}
