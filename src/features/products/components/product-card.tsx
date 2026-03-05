@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { ProductsResponseDTO } from "../types/get-all-products.types";
 import { formatCurrency } from "@/lib/formatCurrency";
+import { ArrowUpRight } from "lucide-react";
 
 interface ProductCardProps {
     product: ProductsResponseDTO;
@@ -13,25 +14,36 @@ export function ProductCard({ product, onClick }: ProductCardProps) {
     return (
         <button
             onClick={onClick}
-            className="rounded-lg border bg-card p-4 shadow-sm transition-all hover:shadow-lg hover:scale-105 cursor-pointer w-full text-left"
+            className="group rounded-xl border bg-card shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer w-full text-left overflow-hidden"
         >
-            <div className="relative w-full h-48 mb-4">
+            {/* Image area */}
+            <div className="relative w-full h-52 bg-white">
                 <Image
                     src={product.image}
                     alt={product.title}
                     fill
-                    className="object-contain"
+                    className="object-contain p-6 transition-transform duration-300 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
+                {/* Category badge */}
+                <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 bg-background/90 backdrop-blur-sm border rounded-full px-2.5 py-1">
+                    <span className="h-1.5 w-1.5 rounded-full bg-brand-primary"></span>
+                    <span className="text-xs font-medium text-brand-primary capitalize">{product.category}</span>
+                </div>
             </div>
 
-            <div className="space-y-2">
-                <h3 className="font-semibold text-sm line-clamp-2 min-h-10">{product.title}</h3>
+            {/* Content */}
+            <div className="p-4 space-y-3">
+                <h3 className="font-semibold text-sm line-clamp-2 leading-snug min-h-[2.5rem] text-card-foreground">
+                    {product.title}
+                </h3>
 
-                <p className="text-xs text-muted-foreground capitalize">{product.category}</p>
-
-                <div className="flex items-center justify-between pt-2">
-                    <span className="text-2xl font-bold text-primary">{formatCurrency(product.price)}</span>
+                <div className="flex items-center justify-between pt-1">
+                    <span className="text-xl font-bold text-brand-primary">{formatCurrency(product.price)}</span>
+                    <span className="inline-flex items-center gap-1 text-xs font-medium text-muted-foreground group-hover:text-brand-primary transition-colors duration-200">
+                        Ver detalhes
+                        <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </span>
                 </div>
             </div>
         </button>
