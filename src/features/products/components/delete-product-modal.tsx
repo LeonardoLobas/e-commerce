@@ -1,6 +1,8 @@
 "use client";
 
 import { useDeleteProductMutation } from "../hooks/use-delete-product-mutation.hook";
+import { Button } from "@/components/ui/button";
+import { X, Trash2, TriangleAlert } from "lucide-react";
 
 interface DeleteProductModalProps {
     isOpen: boolean;
@@ -25,37 +27,55 @@ export const DeleteProductModal = ({ isOpen, onClose, productId, productTitle, o
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={onClose}>
-            <div className="relative bg-white rounded-lg p-6 max-w-md w-full mx-4 shadow-xl" onClick={(e) => e.stopPropagation()}>
-                <button
-                    onClick={onClose}
-                    className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold"
-                    disabled={deleteMutation.isPending}
-                >
-                    ×
-                </button>
-
-                <h2 className="text-xl font-bold mb-4 text-gray-900">Confirmar Exclusão</h2>
-
-                <p className="text-gray-700 mb-6">
-                    Tem certeza que deseja deletar o produto <strong>{productTitle}</strong>?
-                </p>
-
-                <div className="flex gap-4 justify-end">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60" onClick={onClose}>
+            <div className="bg-card rounded-2xl shadow-2xl max-w-md w-full" onClick={(e) => e.stopPropagation()}>
+                {/* Header */}
+                <div className="border-b px-6 py-4 flex justify-between items-center">
+                    <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-destructive/10">
+                            <Trash2 className="w-4 h-4 text-destructive" />
+                        </div>
+                        <div>
+                            <div className="flex items-center gap-1.5">
+                                <span className="h-1.5 w-1.5 rounded-full bg-destructive"></span>
+                                <p className="text-xs font-medium text-destructive uppercase tracking-wider">Ação irreversível</p>
+                            </div>
+                            <h2 className="text-base font-bold leading-tight">Confirmar Exclusão</h2>
+                        </div>
+                    </div>
                     <button
                         onClick={onClose}
-                        className="px-4 py-2 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="p-2 hover:bg-accent rounded-full transition-colors text-muted-foreground hover:text-foreground"
                         disabled={deleteMutation.isPending}
                     >
-                        Cancelar
+                        <X className="w-4 h-4" />
                     </button>
-                    <button
-                        onClick={handleDelete}
-                        className="px-4 py-2 rounded-md bg-destructive text-white hover:bg-destructive/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                        disabled={deleteMutation.isPending}
-                    >
-                        {deleteMutation.isPending ? "Deletando..." : "Deletar"}
-                    </button>
+                </div>
+
+                {/* Body */}
+                <div className="px-6 py-5 space-y-4">
+                    <div className="flex gap-3 rounded-xl border border-destructive/20 bg-destructive/5 p-4">
+                        <TriangleAlert className="w-4 h-4 text-destructive shrink-0 mt-0.5" />
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                            Tem certeza que deseja deletar <span className="font-semibold text-foreground">&quot;{productTitle}&quot;</span>
+                            ? Esta ação não poderá ser desfeita.
+                        </p>
+                    </div>
+
+                    <div className="flex gap-3 justify-end pt-1 border-t">
+                        <Button variant="outline" onClick={onClose} disabled={deleteMutation.isPending}>
+                            Cancelar
+                        </Button>
+                        <Button
+                            variant="destructive"
+                            onClick={handleDelete}
+                            disabled={deleteMutation.isPending}
+                            className="min-w-28 gap-2"
+                        >
+                            <Trash2 className="w-4 h-4" />
+                            {deleteMutation.isPending ? "Deletando..." : "Deletar"}
+                        </Button>
+                    </div>
                 </div>
             </div>
         </div>
