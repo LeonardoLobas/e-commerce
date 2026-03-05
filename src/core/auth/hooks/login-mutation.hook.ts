@@ -44,9 +44,7 @@ export const useLoginMutation = () => {
         },
 
         onError: (error) => {
-            toast.error("Erro ao fazer login", {
-                description: error.message || "Verifique suas credenciais.",
-            });
+            toast.error(error.message || "Usuário ou senha incorretos.");
         },
     });
 };

@@ -8,7 +8,7 @@ import { useLoginMutation } from "../hooks/login-mutation.hook";
 import { useLoginForm } from "../hooks/login-form.hook";
 
 export function LoginForm({ className, ...props }: React.ComponentProps<"form">) {
-    const { mutate, isPending, isError, error } = useLoginMutation();
+    const { mutate, isPending } = useLoginMutation();
 
     const {
         register,
@@ -53,8 +53,6 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"form">)
                     <Input id="password" type="password" {...register("password")} />
                     {errors.password && <p className="text-sm text-destructive">{errors.password.message}</p>}
                 </Field>
-
-                {isError && <p className="text-sm text-destructive text-center">{error?.message}</p>}
 
                 <Field>
                     <Button type="submit" className="w-full" disabled={isPending}>

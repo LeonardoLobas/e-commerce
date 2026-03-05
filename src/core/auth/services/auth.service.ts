@@ -14,6 +14,9 @@ export const authService = async (data: LoginFormData): Promise<LoginResponseDTO
     });
 
     if (!response.ok) {
+        if (response.status === 401) {
+            throw new Error("Usuário ou senha incorretos. Verifique suas credenciais e tente novamente.");
+        }
         const errorData = await response.json().catch(() => ({}));
         throw new Error(errorData.message || errorData.error || `Falha ao fazer login (${response.status})`);
     }
