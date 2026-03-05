@@ -5,7 +5,8 @@ import { useUpdateProductForm } from "../hooks/use-update-product-form.hook";
 import { UpdateProductFormData } from "../schemas/update-product.schema";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Field, FieldLabel } from "@/components/ui/field";
+import { X, Pencil } from "lucide-react";
 
 interface EditProductModalProps {
     isOpen: boolean;
@@ -36,24 +37,38 @@ export const EditProductModal = ({ isOpen, onClose, productId, defaultValues }: 
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={onClose}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50" onClick={onClose}>
             <div
-                className="relative bg-white rounded-lg p-6 max-w-2xl w-full mx-4 shadow-xl max-h-[90vh] overflow-y-auto"
+                className="bg-card rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
                 onClick={(e) => e.stopPropagation()}
             >
-                <button
-                    onClick={onClose}
-                    className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold"
-                    disabled={updateMutation.isPending}
-                >
-                    ×
-                </button>
+                {/* Header */}
+                <div className="sticky top-0 bg-card border-b px-6 py-4 flex justify-between items-center z-10">
+                    <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-brand-light">
+                            <Pencil className="w-4 h-4 text-brand-primary" />
+                        </div>
+                        <div>
+                            <div className="flex items-center gap-1.5">
+                                <span className="h-1.5 w-1.5 rounded-full bg-brand-primary"></span>
+                                <p className="text-xs font-medium text-brand-primary uppercase tracking-wider">Catálogo</p>
+                            </div>
+                            <h2 className="text-base font-bold leading-tight">Editar Produto</h2>
+                        </div>
+                    </div>
+                    <button
+                        onClick={onClose}
+                        className="p-2 hover:bg-accent rounded-full transition-colors text-muted-foreground hover:text-foreground"
+                        disabled={updateMutation.isPending}
+                    >
+                        <X className="w-4 h-4" />
+                    </button>
+                </div>
 
-                <h2 className="text-xl font-bold mb-6 text-gray-900">Editar Produto</h2>
-
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                    <div>
-                        <Label htmlFor="title">Título</Label>
+                <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-5">
+                    {/* Title */}
+                    <Field>
+                        <FieldLabel htmlFor="title">Título</FieldLabel>
                         <Input
                             id="title"
                             {...register("title")}
@@ -61,55 +76,63 @@ export const EditProductModal = ({ isOpen, onClose, productId, defaultValues }: 
                             disabled={updateMutation.isPending}
                         />
                         {errors.title && <p className="text-sm text-destructive mt-1">{errors.title.message}</p>}
+                    </Field>
+
+                    {/* Price + Category side by side */}
+                    <div className="grid grid-cols-2 gap-4">
+                        <Field>
+                            <FieldLabel htmlFor="price">Preço</FieldLabel>
+                            <Input
+                                id="price"
+                                type="number"
+                                step="0.01"
+                                {...register("price")}
+                                placeholder="0.00"
+                                disabled={updateMutation.isPending}
+                            />
+                            {errors.price && <p className="text-sm text-destructive mt-1">{errors.price.message}</p>}
+                        </Field>
+                        <Field>
+                            <FieldLabel htmlFor="category">Categoria</FieldLabel>
+                            <Input
+                                id="category"
+                                {...register("category")}
+                                placeholder="Ex: electronics"
+                                disabled={updateMutation.isPending}
+                            />
+                            {errors.category && <p className="text-sm text-destructive mt-1">{errors.category.message}</p>}
+                        </Field>
                     </div>
 
-                    <div>
-                        <Label htmlFor="price">Preço</Label>
-                        <Input
-                            id="price"
-                            type="number"
-                            step="0.01"
-                            {...register("price")}
-                            placeholder="0.00"
-                            disabled={updateMutation.isPending}
-                        />
-                        {errors.price && <p className="text-sm text-destructive mt-1">{errors.price.message}</p>}
-                    </div>
-
-                    <div>
-                        <Label htmlFor="category">Categoria</Label>
-                        <Input
-                            id="category"
-                            {...register("category")}
-                            placeholder="Categoria do produto"
-                            disabled={updateMutation.isPending}
-                        />
-                        {errors.category && <p className="text-sm text-destructive mt-1">{errors.category.message}</p>}
-                    </div>
-
-                    <div>
-                        <Label htmlFor="description">Descrição</Label>
+                    {/* Description */}
+                    <Field>
+                        <FieldLabel htmlFor="description">Descrição</FieldLabel>
                         <textarea
                             id="description"
                             {...register("description")}
-                            placeholder="Descrição do produto"
+                            placeholder="Descreva o produto..."
                             disabled={updateMutation.isPending}
-                            className="flex min-h-30 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                            rows={4}
+                            className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 resize-none"
                         />
                         {errors.description && <p className="text-sm text-destructive mt-1">{errors.description.message}</p>}
-                    </div>
+                    </Field>
 
-                    <div>
-                        <Label htmlFor="image">URL da Imagem (opcional)</Label>
+                    {/* Image URL */}
+                    <Field>
+                        <FieldLabel htmlFor="image">
+                            URL da Imagem <span className="text-muted-foreground font-normal">(opcional)</span>
+                        </FieldLabel>
                         <Input id="image" {...register("image")} placeholder="https://..." disabled={updateMutation.isPending} />
                         {errors.image && <p className="text-sm text-destructive mt-1">{errors.image.message}</p>}
-                    </div>
+                    </Field>
 
-                    <div className="flex gap-4 justify-end pt-4">
+                    {/* Actions */}
+                    <div className="flex gap-3 justify-end pt-2 border-t">
                         <Button type="button" onClick={onClose} variant="outline" disabled={updateMutation.isPending}>
                             Cancelar
                         </Button>
-                        <Button type="submit" disabled={updateMutation.isPending}>
+                        <Button type="submit" disabled={updateMutation.isPending} className="min-w-36">
                             {updateMutation.isPending ? "Salvando..." : "Salvar Alterações"}
                         </Button>
                     </div>

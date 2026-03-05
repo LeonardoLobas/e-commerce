@@ -29,37 +29,62 @@ export function ProductModal({ productId, isOpen, onClose }: ProductModalProps) 
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50" onClick={onClose}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" onClick={onClose}>
             <div
-                className="bg-card rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+                className="bg-card rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
                 onClick={(e) => e.stopPropagation()}
             >
-                <div className="sticky top-0 bg-card border-b p-4 flex justify-between items-center">
-                    <h2 className="text-xl font-bold">Detalhes do Produto</h2>
-                    <button onClick={onClose} className="p-2 hover:bg-accent rounded-full transition-colors" title="Fechar">
-                        <X className="w-5 h-5" />
+                {/* Header */}
+                <div className="sticky top-0 bg-card border-b px-6 py-4 flex justify-between items-center z-10">
+                    <div className="flex items-center gap-2">
+                        <span className="h-2 w-2 rounded-full bg-brand-primary"></span>
+                        <p className="text-xs font-medium text-brand-primary uppercase tracking-wider">Detalhes do Produto</p>
+                    </div>
+                    <button
+                        onClick={onClose}
+                        className="p-2 hover:bg-accent rounded-full transition-colors text-muted-foreground hover:text-foreground"
+                        title="Fechar"
+                    >
+                        <X className="w-4 h-4" />
                     </button>
                 </div>
 
                 <div className="p-6">
+                    {/* Skeleton loading */}
                     {isLoading && (
-                        <div className="flex items-center justify-center py-12">
-                            <div className="text-center">
-                                <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary mb-4"></div>
-                                <p className="text-muted-foreground">Carregando...</p>
+                        <div className="grid md:grid-cols-2 gap-8 animate-pulse">
+                            <div className="h-80 bg-muted rounded-xl" />
+                            <div className="space-y-4">
+                                <div className="h-3 bg-muted rounded w-1/4" />
+                                <div className="h-5 bg-muted rounded w-full" />
+                                <div className="h-5 bg-muted rounded w-3/4" />
+                                <div className="h-8 bg-muted rounded w-1/3 mt-2" />
+                                <div className="space-y-2 pt-2">
+                                    <div className="h-3 bg-muted rounded" />
+                                    <div className="h-3 bg-muted rounded" />
+                                    <div className="h-3 bg-muted rounded w-2/3" />
+                                </div>
+                                <div className="space-y-2 pt-4">
+                                    <div className="h-10 bg-muted rounded-lg" />
+                                    <div className="h-10 bg-muted rounded-lg" />
+                                </div>
                             </div>
                         </div>
                     )}
 
+                    {/* Error */}
                     {isError && (
-                        <div className="text-center py-12">
-                            <p className="text-destructive">Erro ao carregar produto</p>
+                        <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-10 text-center space-y-1">
+                            <p className="font-semibold text-destructive">Erro ao carregar produto</p>
+                            <p className="text-sm text-muted-foreground">Tente fechar e abrir novamente.</p>
                         </div>
                     )}
 
+                    {/* Content */}
                     {product && (
                         <div className="grid md:grid-cols-2 gap-8">
-                            <div className="relative h-96 bg-white rounded-lg flex items-center justify-center">
+                            {/* Image */}
+                            <div className="relative h-80 bg-white rounded-xl border flex items-center justify-center overflow-hidden">
                                 <Image
                                     src={product.image}
                                     alt={product.title}
@@ -68,42 +93,54 @@ export function ProductModal({ productId, isOpen, onClose }: ProductModalProps) 
                                     sizes="(max-width: 768px) 100vw, 50vw"
                                 />
                             </div>
-                            <div className="space-y-6">
-                                <div>
-                                    <h1 className="text-2xl font-bold mb-2">{product.title}</h1>
-                                    <p className="text-sm text-muted-foreground capitalize">Categoria: {product.category}</p>
+
+                            {/* Info */}
+                            <div className="flex flex-col gap-5">
+                                {/* Category badge */}
+                                <div className="inline-flex items-center gap-1.5 bg-brand-light border rounded-full px-3 py-1 w-fit">
+                                    <span className="h-1.5 w-1.5 rounded-full bg-brand-primary"></span>
+                                    <span className="text-xs font-medium text-brand-primary capitalize">{product.category}</span>
                                 </div>
 
-                                <div className="py-4 border-y">
-                                    <span className="text-3xl font-bold text-primary">{formatCurrency(product.price)}</span>
+                                {/* Title */}
+                                <h1 className="text-xl font-bold leading-snug">{product.title}</h1>
+
+                                {/* Price */}
+                                <div className="flex items-baseline gap-2 py-4 border-y">
+                                    <span className="text-3xl font-bold text-brand-primary">{formatCurrency(product.price)}</span>
                                 </div>
 
-                                <div>
-                                    <h3 className="font-semibold mb-2">Descrição</h3>
-                                    <p className="text-muted-foreground leading-relaxed text-sm">{product.description}</p>
+                                {/* Description */}
+                                <div className="space-y-1.5">
+                                    <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                                        Descrição
+                                    </h3>
+                                    <p className="text-sm text-muted-foreground leading-relaxed line-clamp-4">
+                                        {product.description}
+                                    </p>
                                 </div>
 
-                                <div className="space-y-3 pt-4">
+                                {/* Actions */}
+                                <div className="space-y-2 pt-2 mt-auto">
                                     <AddToCartButton productId={product.id} userId={1} />
-                                    <Button
-                                        variant="outline"
-                                        className="w-full hover:bg-accent"
-                                        onClick={() => setIsEditModalOpen(true)}
-                                    >
-                                        <Pencil className="w-4 h-4 mr-2" />
-                                        Editar Produto
-                                    </Button>
-                                    <Button
-                                        variant="destructive"
-                                        className="w-full bg-destructive hover:bg-destructive/90"
-                                        onClick={() => setIsDeleteModalOpen(true)}
-                                    >
-                                        <Trash2 className="w-4 h-4 mr-2" />
-                                        Deletar Produto
-                                    </Button>
-                                    <Button variant="outline" className="w-full" onClick={onClose}>
-                                        Fechar
-                                    </Button>
+                                    <div className="grid grid-cols-2 gap-2">
+                                        <Button
+                                            variant="outline"
+                                            className="gap-2 hover:bg-accent"
+                                            onClick={() => setIsEditModalOpen(true)}
+                                        >
+                                            <Pencil className="w-4 h-4" />
+                                            Editar
+                                        </Button>
+                                        <Button
+                                            variant="destructive"
+                                            className="gap-2"
+                                            onClick={() => setIsDeleteModalOpen(true)}
+                                        >
+                                            <Trash2 className="w-4 h-4" />
+                                            Deletar
+                                        </Button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
