@@ -18,12 +18,14 @@ export const CartItem = ({ item, onUpdateQuantity, onRemove }: CartItemProps) =>
 
     if (isLoading) {
         return (
-            <div className="flex items-center gap-4 p-4 bg-card rounded-lg border animate-pulse">
-                <div className="w-20 h-20 bg-gray-200 rounded" />
+            <div className="flex items-center gap-4 p-4 bg-card rounded-xl border animate-pulse">
+                <div className="w-20 h-20 bg-muted rounded-lg shrink-0" />
                 <div className="flex-1 space-y-2">
-                    <div className="h-4 bg-gray-200 rounded w-3/4" />
-                    <div className="h-4 bg-gray-200 rounded w-1/2" />
+                    <div className="h-3 bg-muted rounded w-3/4" />
+                    <div className="h-3 bg-muted rounded w-1/4" />
                 </div>
+                <div className="h-8 w-28 bg-muted rounded-lg" />
+                <div className="h-5 w-16 bg-muted rounded" />
             </div>
         );
     }
@@ -33,48 +35,54 @@ export const CartItem = ({ item, onUpdateQuantity, onRemove }: CartItemProps) =>
     const subtotal = product.price * item.quantity;
 
     return (
-        <div className="flex items-center gap-4 p-4 bg-card rounded-lg border">
-            <div className="relative w-20 h-20 shrink-0">
-                <Image src={product.image} alt={product.title} fill className="object-contain" sizes="80px" />
+        <div className="flex items-center gap-4 p-4 bg-card rounded-xl border transition-shadow hover:shadow-sm">
+            {/* Image */}
+            <div className="relative w-20 h-20 shrink-0 bg-white rounded-lg border overflow-hidden">
+                <Image src={product.image} alt={product.title} fill className="object-contain p-2" sizes="80px" />
             </div>
 
+            {/* Info */}
             <div className="flex-1 min-w-0">
-                <h3 className="font-semibold text-sm truncate">{product.title}</h3>
-                <p className="text-sm text-muted-foreground">{formatCurrency(product.price)}</p>
+                <h3 className="font-semibold text-sm line-clamp-2 leading-snug">{product.title}</h3>
+                <p className="text-sm text-brand-primary font-medium mt-1">{formatCurrency(product.price)}</p>
             </div>
 
-            <div className="flex items-center gap-2">
+            {/* Quantity controls */}
+            <div className="flex items-center gap-1.5 bg-muted/50 rounded-lg p-1">
                 <Button
-                    variant="outline"
+                    variant="ghost"
                     size="icon"
-                    className="h-8 w-8"
+                    className="h-7 w-7 rounded-md hover:bg-background"
                     onClick={() => onUpdateQuantity(item.productId, Math.max(1, item.quantity - 1))}
                     disabled={item.quantity <= 1}
                 >
-                    <Minus className="h-4 w-4" />
+                    <Minus className="h-3.5 w-3.5" />
                 </Button>
-                <span className="w-8 text-center font-semibold">{item.quantity}</span>
+                <span className="w-6 text-center text-sm font-bold">{item.quantity}</span>
                 <Button
-                    variant="outline"
+                    variant="ghost"
                     size="icon"
-                    className="h-8 w-8"
+                    className="h-7 w-7 rounded-md hover:bg-background"
                     onClick={() => onUpdateQuantity(item.productId, item.quantity + 1)}
                 >
-                    <Plus className="h-4 w-4" />
+                    <Plus className="h-3.5 w-3.5" />
                 </Button>
             </div>
 
-            <div className="text-right min-w-20">
-                <p className="font-bold">{formatCurrency(subtotal)}</p>
+            {/* Subtotal */}
+            <div className="text-right min-w-20 hidden sm:block">
+                <p className="text-xs text-muted-foreground">Subtotal</p>
+                <p className="font-bold text-sm">{formatCurrency(subtotal)}</p>
             </div>
 
+            {/* Remove */}
             <Button
                 variant="ghost"
                 size="icon"
                 onClick={() => onRemove(item.productId)}
-                className="text-destructive hover:text-destructive/80 hover:bg-destructive/10"
+                className="text-muted-foreground hover:text-destructive hover:bg-destructive/10 shrink-0"
             >
-                <Trash2 className="h-5 w-5" />
+                <Trash2 className="h-4 w-4" />
             </Button>
         </div>
     );

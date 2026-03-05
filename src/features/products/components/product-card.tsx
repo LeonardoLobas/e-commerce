@@ -34,9 +34,7 @@ export function ProductCard({ product, onClick }: ProductCardProps) {
 
             {/* Content */}
             <div className="p-4 space-y-3">
-                <h3 className="font-semibold text-sm line-clamp-2 leading-snug min-h-[2.5rem] text-card-foreground">
-                    {product.title}
-                </h3>
+                <h3 className="font-semibold text-sm line-clamp-2 leading-snug min-h-10 text-card-foreground">{product.title}</h3>
 
                 <div className="flex items-center justify-between pt-1">
                     <span className="text-xl font-bold text-brand-primary">{formatCurrency(product.price)}</span>
