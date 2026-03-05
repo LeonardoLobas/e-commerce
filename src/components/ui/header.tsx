@@ -5,6 +5,7 @@ import { LogoutButton } from "@/core/auth/components/logout-button";
 import { usePathname } from "next/navigation";
 import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export function Header() {
     const { isAuthenticated, isLoading } = useAuth();
@@ -48,7 +49,12 @@ export function Header() {
                             <li>
                                 <Link
                                     href="/products"
-                                    className=" hidden sm:flex items-center gap-1.5 px-3 lg:px-4 py-2 text-sm font-medium text-muted-foreground cursor-pointer rounded-md transition-all duration-200 hover:bg-accent hover:text-accent-foreground"
+                                    className={cn(
+                                        "flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-md transition-all duration-200",
+                                        pathname === "/products"
+                                            ? "text-foreground bg-accent"
+                                            : "text-muted-foreground hover:bg-accent hover:text-accent-foreground",
+                                    )}
                                 >
                                     Produtos
                                 </Link>
@@ -56,7 +62,12 @@ export function Header() {
                             <li>
                                 <Link
                                     href="/cart"
-                                    className="hidden sm:flex items-center gap-1.5 px-3 lg:px-4 py-2 text-sm font-medium text-muted-foreground cursor-pointer rounded-md transition-all duration-200 hover:bg-accent hover:text-accent-foreground"
+                                    className={cn(
+                                        "flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-md transition-all duration-200",
+                                        pathname === "/carts"
+                                            ? "text-foreground bg-accent"
+                                            : "text-muted-foreground hover:bg-accent hover:text-accent-foreground",
+                                    )}
                                 >
                                     Carrinhos
                                 </Link>
@@ -64,7 +75,12 @@ export function Header() {
                             <li>
                                 <Link
                                     href="/users"
-                                    className="flex items-center gap-1.5 px-3 lg:px-4 py-2 text-sm font-medium text-muted-foreground cursor-pointer rounded-md transition-all duration-200 hover:bg-accent hover:text-accent-foreground"
+                                    className={cn(
+                                        "flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-md transition-all duration-200",
+                                        pathname === "/users"
+                                            ? "text-foreground bg-accent"
+                                            : "text-muted-foreground hover:bg-accent hover:text-accent-foreground",
+                                    )}
                                 >
                                     Usuários
                                 </Link>
