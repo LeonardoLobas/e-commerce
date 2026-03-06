@@ -1,6 +1,8 @@
 "use client";
 
 import { UserResponseDTO } from "../types/get-all-users.types";
+import { Button } from "@/components/ui/button";
+import { Pencil, Trash2, Mail, Phone, MapPin } from "lucide-react";
 
 interface UserCardProps {
     user: UserResponseDTO;
@@ -10,61 +12,78 @@ interface UserCardProps {
 }
 
 export function UserCard({ user, onClick, onEdit, onDelete }: UserCardProps) {
+    const initials = `${user.name.firstname[0]}${user.name.lastname[0]}`.toUpperCase();
+
     return (
-        <div onClick={onClick} className="rounded-lg border bg-card p-6 shadow-sm transition-all hover:shadow-lg cursor-pointer">
-            <div className="space-y-3">
-                <div className="flex items-start justify-between">
-                    <div>
-                        <h3 className="font-semibold text-lg">
-                            {user.name.firstname} {user.name.lastname}
-                        </h3>
-                        <p className="text-sm text-muted-foreground">@{user.username}</p>
-                    </div>
-                    <span className="text-xs text-muted-foreground">#{user.id}</span>
+        <div
+            onClick={onClick}
+            className="rounded-xl border bg-card shadow-sm transition-all duration-200 hover:shadow-md overflow-hidden"
+        >
+            {/* Card header */}
+            <div className="p-5 flex items-center gap-4">
+                <div className="flex items-center justify-center w-11 h-11 rounded-full bg-brand-light shrink-0">
+                    <span className="text-sm font-bold text-brand-primary">{initials}</span>
                 </div>
-
-                <div className="space-y-1 text-sm">
-                    <p className="flex items-center gap-2">
-                        <span className="text-muted-foreground">Email:</span>
-                        <span>{user.email}</span>
-                    </p>
-                    <p className="flex items-center gap-2">
-                        <span className="text-muted-foreground">Telefone:</span>
-                        <span>{user.phone}</span>
-                    </p>
-                    <p className="flex items-center gap-2">
-                        <span className="text-muted-foreground">Cidade:</span>
-                        <span>{user.address.city}</span>
-                    </p>
+                <div className="min-w-0 flex-1">
+                    <h3 className="font-semibold text-sm truncate">
+                        {user.name.firstname} {user.name.lastname}
+                    </h3>
+                    <p className="text-xs text-muted-foreground truncate">@{user.username}</p>
                 </div>
-
-                {(onEdit || onDelete) && (
-                    <div className="flex gap-2 pt-2 border-t">
-                        {onEdit && (
-                            <button
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    onEdit();
-                                }}
-                                className="flex-1 px-3 py-2 text-sm bg-primary text-white rounded hover:bg-primary/90 transition-colors"
-                            >
-                                Editar
-                            </button>
-                        )}
-                        {onDelete && (
-                            <button
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    onDelete();
-                                }}
-                                className="flex-1 px-3 py-2 text-sm bg-destructive text-white rounded hover:bg-destructive/90 transition-colors"
-                            >
-                                Deletar
-                            </button>
-                        )}
-                    </div>
-                )}
+                <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded-full shrink-0">#{user.id}</span>
             </div>
+
+            <div className="border-t" />
+
+            {/* Info */}
+            <div className="px-5 py-4 space-y-2">
+                <div className="flex items-center gap-2 text-sm">
+                    <Mail className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
+                    <span className="text-muted-foreground truncate">{user.email}</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                    <Phone className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
+                    <span className="text-muted-foreground">{user.phone}</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                    <MapPin className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
+                    <span className="text-muted-foreground capitalize">{user.address.city}</span>
+                </div>
+            </div>
+
+            {/* Actions */}
+            {(onEdit || onDelete) && (
+                <div className="px-5 pb-5 flex gap-2">
+                    {onEdit && (
+                        <Button
+                            variant="outline"
+                            size="sm"
+                            className="flex-1 gap-1.5"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                onEdit();
+                            }}
+                        >
+                            <Pencil className="w-3.5 h-3.5" />
+                            Editar
+                        </Button>
+                    )}
+                    {onDelete && (
+                        <Button
+                            variant="ghost"
+                            size="sm"
+                            className="flex-1 gap-1.5 text-muted-foreground hover:text-destructive hover:bg-destructive/10"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                onDelete();
+                            }}
+                        >
+                            <Trash2 className="w-3.5 h-3.5" />
+                            Deletar
+                        </Button>
+                    )}
+                </div>
+            )}
         </div>
     );
 }
