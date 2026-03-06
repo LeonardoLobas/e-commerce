@@ -8,12 +8,24 @@ import { CartItem } from "@/features/carts/components/cart-item";
 import { ShoppingBag } from "lucide-react";
 import Link from "next/link";
 import { useAuth } from "@/core/auth/hooks/use-auth.hook";
+import { useState, useCallback } from "react";
+import { formatCurrency } from "@/lib/formatCurrency";
 
 export default function CarrinhoPage() {
     const { userId, isLoading: isLoadingAuth } = useAuth();
     const { data: carts, isLoading, isError } = useCartsByUserQuery(userId as number);
     const updateCartMutation = useUpdateCartMutation();
     const deleteCartMutation = useDeleteCartMutation(userId as number);
+    const [subtotals, setSubtotals] = useState<Record<number, number>>({});
+
+    const handleSubtotalChange = useCallback((productId: number, subtotal: number) => {
+        setSubtotals((prev) => {
+            if (prev[productId] === subtotal) return prev;
+            return { ...prev, [productId]: subtotal };
+        });
+    }, []);
+
+    const cartTotal = Object.values(subtotals).reduce((sum, v) => sum + v, 0);
 
     const activeCart = carts?.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())[0];
 
@@ -58,7 +70,7 @@ export default function CarrinhoPage() {
     };
 
     return (
-        <div className="min-h-screen p-8">
+        <div className="min-h-screen px-4 py-8 sm:px-8">
             <div className="max-w-6xl mx-auto space-y-10">
                 {/* Page header */}
                 <div className="space-y-2">
@@ -146,6 +158,7 @@ export default function CarrinhoPage() {
                                     item={item}
                                     onUpdateQuantity={handleUpdateQuantity}
                                     onRemove={handleRemoveItem}
+                                    onSubtotalChange={handleSubtotalChange}
                                 />
                             ))}
                         </div>
@@ -163,7 +176,7 @@ export default function CarrinhoPage() {
                                 <div className="space-y-3 text-sm">
                                     <div className="flex justify-between">
                                         <span className="text-muted-foreground">Subtotal</span>
-                                        <span className="font-medium">--</span>
+                                        <span className="font-medium">{cartTotal > 0 ? formatCurrency(cartTotal) : "--"}</span>
                                     </div>
                                     <div className="flex justify-between">
                                         <span className="text-muted-foreground">Frete</span>
@@ -174,7 +187,9 @@ export default function CarrinhoPage() {
                                 <div className="border-t pt-4">
                                     <div className="flex justify-between items-baseline">
                                         <span className="font-semibold">Total</span>
-                                        <span className="text-2xl font-bold text-brand-primary">--</span>
+                                        <span className="text-2xl font-bold text-brand-primary">
+                                            {cartTotal > 0 ? formatCurrency(cartTotal) : "--"}
+                                        </span>
                                     </div>
                                 </div>
 
