@@ -2,6 +2,14 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+## Environment Variables
+
+Create a `.env.local` file at the project root with:
+
+```bash
+BASE_URL=https://fakestoreapi.com
+```
+
 First, run the development server:
 
 ```bash
