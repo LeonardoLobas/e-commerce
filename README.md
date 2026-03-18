@@ -66,6 +66,8 @@ Rotas protegidas redirecionam para `/login` sem token válido. Usuários autenti
 
 ## Usuário de Teste
 
+## Link Vercel https://e-commerce-peach-one-27.vercel.app/login
+
 Para acessar a aplicação sem criar uma conta:
 
 | Campo       | Valor     |
