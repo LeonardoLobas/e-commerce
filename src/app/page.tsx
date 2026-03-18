@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 import { HeroCarousel } from "@/components/ui/hero-carousel";
 import { StatsSection } from "@/components/ui/stats-section";
 

@@ -1,6 +1,6 @@
 "use server";
 
-import { CreateUserRequestDTO, CreateUserResponseDTO } from "../types/create-user.types";
+import { type CreateUserRequestDTO, type CreateUserResponseDTO } from "../types/create-user.types";
 
 export const createUserService = async (data: CreateUserRequestDTO): Promise<CreateUserResponseDTO> => {
     const response = await fetch(`${process.env.BASE_URL}/users`, {

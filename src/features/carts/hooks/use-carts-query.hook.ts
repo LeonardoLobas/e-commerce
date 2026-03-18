@@ -1,6 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
+
 import { getCartsByUserAction } from "../actions/get-carts-by-user.action";
 
 export const useCartsByUserQuery = (userId: number) => {

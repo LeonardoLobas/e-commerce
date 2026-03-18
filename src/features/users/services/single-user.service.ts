@@ -1,6 +1,6 @@
 "use server";
 
-import { SingleUserResponseDTO } from "../types/single-user.types";
+import { type SingleUserResponseDTO } from "../types/single-user.types";
 
 export const userFindByIdService = async (id: number): Promise<SingleUserResponseDTO> => {
     const response = await fetch(`${process.env.BASE_URL}/users/${id}`, {

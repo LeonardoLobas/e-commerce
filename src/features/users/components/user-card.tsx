@@ -1,8 +1,10 @@
 "use client";
 
-import { UserResponseDTO } from "../types/get-all-users.types";
+import { Mail, MapPin,Pencil, Phone, Trash2 } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
-import { Pencil, Trash2, Mail, Phone, MapPin } from "lucide-react";
+
+import { type UserResponseDTO } from "../types/get-all-users.types";
 
 interface UserCardProps {
     user: UserResponseDTO;

@@ -1,8 +1,8 @@
 "use client";
 import { ShoppingCart } from "lucide-react";
-
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+
 import { SignupForm } from "@/core/auth/components/signup-form";
 export default function RegisterPage() {
     return (

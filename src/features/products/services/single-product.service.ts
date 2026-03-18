@@ -1,4 +1,4 @@
-import { SingleProductResponseDTO } from "../types/single-product.types";
+import { type SingleProductResponseDTO } from "../types/single-product.types";
 
 export const productFindByIdService = async (id: number): Promise<SingleProductResponseDTO> => {
     const response = await fetch(`${process.env.BASE_URL}/products/${id}`, {

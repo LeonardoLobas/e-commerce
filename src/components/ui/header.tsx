@@ -1,10 +1,11 @@
 "use client";
 
-import { useAuth } from "@/core/auth/hooks/use-auth.hook";
-import { LogoutButton } from "@/core/auth/components/logout-button";
-import { usePathname } from "next/navigation";
 import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+import { LogoutButton } from "@/core/auth/components/logout-button";
+import { useAuth } from "@/core/auth/hooks/use-auth.hook";
 import { cn } from "@/lib/utils";
 
 export function Header() {

@@ -1,6 +1,8 @@
-import type { Metadata } from "next";
-import { Playfair_Display, DM_Sans } from "next/font/google";
 import "./globals.css";
+
+import type { Metadata } from "next";
+import { DM_Sans,Playfair_Display } from "next/font/google";
+
 import { Providers } from "@/shared/providers/query";
 
 const playfair = Playfair_Display({

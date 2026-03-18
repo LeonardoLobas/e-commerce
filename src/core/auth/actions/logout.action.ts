@@ -1,7 +1,8 @@
 "use server";
 
-import { removeAuthToken } from "../services/token.service";
 import { redirect } from "next/navigation";
+
+import { removeAuthToken } from "../services/token.service";
 
 export async function logoutAction() {
     await removeAuthToken();

@@ -1,4 +1,4 @@
-import { CartProductDTO } from "./cart-product.types";
+import { type CartProductDTO } from "./cart-product.types";
 
 export interface CartResponseDTO {
     id: number;

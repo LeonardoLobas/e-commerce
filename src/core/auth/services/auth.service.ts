@@ -1,8 +1,8 @@
 // auth.service.ts
 "use server";
 
-import { LoginFormData } from "../schemas/login.schema";
-import { LoginResponseDTO } from "../types/auth.types";
+import { type LoginFormData } from "../schemas/login.schema";
+import { type LoginResponseDTO } from "../types/auth.types";
 
 export const authService = async (data: LoginFormData): Promise<LoginResponseDTO> => {
     const response = await fetch(`${process.env.BASE_URL}/auth/login`, {

@@ -2,8 +2,9 @@
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
+
 import { addToCartAction } from "../actions/add-to-cart.action";
-import { AddToCartRequestDTO } from "../types/add-to-cart.types";
+import { type AddToCartRequestDTO } from "../types/add-to-cart.types";
 
 export const useAddToCartMutation = () => {
     const queryClient = useQueryClient();

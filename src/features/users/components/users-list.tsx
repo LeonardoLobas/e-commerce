@@ -1,14 +1,16 @@
 "use client";
 
-import { useState } from "react";
-import { useUsersQuery } from "../hooks/use-users-query.hook";
-import { UserCard } from "./user-card";
-import { CreateUserModal } from "./create-user-modal";
-import { UpdateUserModal } from "./update-user-modal";
-import { DeleteUserModal } from "./delete-user-modal";
-import { Button } from "@/components/ui/button";
-import { SingleUserResponseDTO } from "../types/single-user.types";
 import { UserPlus } from "lucide-react";
+import { useState } from "react";
+
+import { Button } from "@/components/ui/button";
+
+import { useUsersQuery } from "../hooks/use-users-query.hook";
+import { type SingleUserResponseDTO } from "../types/single-user.types";
+import { CreateUserModal } from "./create-user-modal";
+import { DeleteUserModal } from "./delete-user-modal";
+import { UpdateUserModal } from "./update-user-modal";
+import { UserCard } from "./user-card";
 
 export const UsersList = () => {
     const { data: users, isLoading, error } = useUsersQuery();

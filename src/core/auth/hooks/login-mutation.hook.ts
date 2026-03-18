@@ -1,9 +1,10 @@
-import { toast } from "sonner";
-import { LoginFormData } from "../schemas/login.schema";
-import { loginAction } from "../actions/auth.action";
-import { LoginResponseDTO } from "../types/auth.types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+
+import { loginAction } from "../actions/auth.action";
+import { type LoginFormData } from "../schemas/login.schema";
+import { type LoginResponseDTO } from "../types/auth.types";
 import { useAuth } from "./use-auth.hook";
 
 export const useLoginMutation = () => {

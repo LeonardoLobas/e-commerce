@@ -1,8 +1,9 @@
 "use server";
 
+import { type ActionResponse } from "@/shared/types/action-response.types";
+
 import { productFindByIdService } from "../services/single-product.service";
-import { SingleProductResponseDTO } from "../types/single-product.types";
-import { ActionResponse } from "@/shared/types/action-response.types";
+import { type SingleProductResponseDTO } from "../types/single-product.types";
 
 export async function getSingleProductAction(id: number): Promise<ActionResponse<SingleProductResponseDTO>> {
     try {

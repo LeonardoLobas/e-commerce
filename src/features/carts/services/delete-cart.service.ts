@@ -1,6 +1,6 @@
 "use server";
 
-import { DeleteCartResponseDTO } from "../types/delete-cart.types";
+import { type DeleteCartResponseDTO } from "../types/delete-cart.types";
 
 export const deleteCartService = async (id: number): Promise<DeleteCartResponseDTO> => {
     const response = await fetch(`${process.env.BASE_URL}/carts/${id}`, {

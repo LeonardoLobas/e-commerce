@@ -1,9 +1,10 @@
 "use server";
 
-import { ActionResponse } from "@/shared/types/action-response.types";
-import { UpdateProductFormData, updateProductSchema } from "../schemas/update-product.schema";
-import { UpdateProductResponseDTO } from "../types/update-product.types";
+import { type ActionResponse } from "@/shared/types/action-response.types";
+
+import { type UpdateProductFormData, updateProductSchema } from "../schemas/update-product.schema";
 import { updateProductService } from "../services/update-product.service";
+import { type UpdateProductResponseDTO } from "../types/update-product.types";
 
 export const updateProductAction = async (
     id: number,

@@ -1,8 +1,9 @@
 "use server";
 
+import { type ActionResponse } from "@/shared/types/action-response.types";
+
 import { usersFindAllService } from "../services/get-all-users.service";
-import { UsersListResponseDTO } from "../types/get-all-users.types";
-import { ActionResponse } from "@/shared/types/action-response.types";
+import { type UsersListResponseDTO } from "../types/get-all-users.types";
 
 export async function getAllUsersAction(): Promise<ActionResponse<UsersListResponseDTO>> {
     try {

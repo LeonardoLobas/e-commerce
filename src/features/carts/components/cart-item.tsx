@@ -1,11 +1,13 @@
 "use client";
 
-import { CartProductDTO } from "../types/cart-product.types";
+import { Minus,Plus, Trash2 } from "lucide-react";
+import Image from "next/image";
+
+import { Button } from "@/components/ui/button";
 import { useSingleProductQuery } from "@/features/products/hooks/use-single-product-query.hook";
 import { formatCurrency } from "@/lib/formatCurrency";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Trash2, Plus, Minus } from "lucide-react";
+
+import { type CartProductDTO } from "../types/cart-product.types";
 
 interface CartItemProps {
     item: CartProductDTO;

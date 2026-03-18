@@ -1,8 +1,9 @@
 "use server";
 
-import { ActionResponse } from "@/shared/types/action-response.types";
-import { DeleteUserResponseDTO } from "../types/delete-user.types";
+import { type ActionResponse } from "@/shared/types/action-response.types";
+
 import { userDeleteService } from "../services/delete-user.service";
+import { type DeleteUserResponseDTO } from "../types/delete-user.types";
 
 export const deleteUserAction = async (id: number): Promise<ActionResponse<DeleteUserResponseDTO>> => {
     try {

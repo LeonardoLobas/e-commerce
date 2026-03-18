@@ -1,9 +1,10 @@
 "use client";
 
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { UpdateUserFormData, updateUserSchema } from "../schemas/update-user.schema";
-import { SingleUserResponseDTO } from "../types/single-user.types";
+import { useForm } from "react-hook-form";
+
+import { type UpdateUserFormData, updateUserSchema } from "../schemas/update-user.schema";
+import { type SingleUserResponseDTO } from "../types/single-user.types";
 
 export const useUpdateUserForm = (user?: SingleUserResponseDTO) => {
     return useForm<UpdateUserFormData>({

@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence,motion } from "framer-motion";
 import Image from "next/image";
+import { useEffect,useState } from "react";
 
 const images = ["/carrosel-1.jpg", "/carrosel-2.jpg", "/carrosel-3.jpg"];
 

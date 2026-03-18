@@ -1,8 +1,10 @@
 "use client";
 
-import { useDeleteUserMutation } from "../hooks/use-delete-user-mutation.hook";
+import { Trash2, TriangleAlert, X } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
-import { X, Trash2, TriangleAlert } from "lucide-react";
+
+import { useDeleteUserMutation } from "../hooks/use-delete-user-mutation.hook";
 
 interface DeleteUserModalProps {
     isOpen: boolean;
@@ -54,8 +56,12 @@ export const DeleteUserModal = ({ isOpen, onClose, userId, userName }: DeleteUse
                         <TriangleAlert className="w-4 h-4 text-destructive shrink-0 mt-0.5" />
                         <p className="text-sm text-muted-foreground leading-relaxed">
                             Tem certeza que deseja deletar{" "}
-                            {userName ? <span className="font-semibold text-foreground">"{userName}"</span> : "este usuário"}?{" "}
-                            Esta ação não poderá ser desfeita.
+                            {userName ? (
+                                <span className="font-semibold text-foreground">&quot;{userName}&quot;</span>
+                            ) : (
+                                "este usuário"
+                            )}
+                            ? Esta ação não poderá ser desfeita.
                         </p>
                     </div>
 

@@ -1,14 +1,16 @@
 "use client";
 
-import { useUpdateUserMutation } from "../hooks/use-update-user-mutation.hook";
-import { useUpdateUserForm } from "../hooks/use-update-user-form.hook";
-import { UpdateUserFormData } from "../schemas/update-user.schema";
-import { SingleUserResponseDTO } from "../types/single-user.types";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Field, FieldLabel } from "@/components/ui/field";
 import { Pencil, X } from "lucide-react";
 import { useEffect } from "react";
+
+import { Button } from "@/components/ui/button";
+import { Field, FieldLabel } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+
+import { useUpdateUserForm } from "../hooks/use-update-user-form.hook";
+import { useUpdateUserMutation } from "../hooks/use-update-user-mutation.hook";
+import { type UpdateUserFormData } from "../schemas/update-user.schema";
+import { type SingleUserResponseDTO } from "../types/single-user.types";
 
 interface UpdateUserModalProps {
     isOpen: boolean;

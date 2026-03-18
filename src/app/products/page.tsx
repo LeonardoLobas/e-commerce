@@ -1,13 +1,14 @@
 "use client";
 
+import { Plus } from "lucide-react";
 import { useState } from "react";
-import { useProductsQuery } from "@/features/products/hooks/use-products-query.hook";
+
+import { Button } from "@/components/ui/button";
+import { CreateProductModal } from "@/features/products/components/create-product-modal";
 import { ProductCard } from "@/features/products/components/product-card";
 import { ProductModal } from "@/features/products/components/product-modal";
-import { CreateProductModal } from "@/features/products/components/create-product-modal";
-import { Button } from "@/components/ui/button";
-import { ProductsResponseDTO } from "@/features/products/types/get-all-products.types";
-import { Plus } from "lucide-react";
+import { useProductsQuery } from "@/features/products/hooks/use-products-query.hook";
+import { type ProductsResponseDTO } from "@/features/products/types/get-all-products.types";
 
 export default function ProductsPage() {
     const { data: products, isLoading, isError, error } = useProductsQuery();

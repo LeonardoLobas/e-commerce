@@ -1,12 +1,14 @@
 "use client";
 
-import { useUpdateProductMutation } from "../hooks/use-update-product-mutation.hook";
-import { useUpdateProductForm } from "../hooks/use-update-product-form.hook";
-import { UpdateProductFormData } from "../schemas/update-product.schema";
+import { Pencil,X } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Field, FieldLabel } from "@/components/ui/field";
-import { X, Pencil } from "lucide-react";
+import { Input } from "@/components/ui/input";
+
+import { useUpdateProductForm } from "../hooks/use-update-product-form.hook";
+import { useUpdateProductMutation } from "../hooks/use-update-product-mutation.hook";
+import { type UpdateProductFormData } from "../schemas/update-product.schema";
 
 interface EditProductModalProps {
     isOpen: boolean;

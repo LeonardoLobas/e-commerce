@@ -1,8 +1,9 @@
 "use client";
 
-import { useForm, UseFormReturn } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { UpdateProductFormData, updateProductSchema } from "../schemas/update-product.schema";
+import { useForm, type UseFormReturn } from "react-hook-form";
+
+import { type UpdateProductFormData, updateProductSchema } from "../schemas/update-product.schema";
 
 interface UseUpdateProductFormProps {
     defaultValues?: UpdateProductFormData;

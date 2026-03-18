@@ -1,6 +1,6 @@
 "use server";
 
-import { CreateProductRequestDTO, CreateProductResponseDTO } from "../types/create-product.types";
+import { type CreateProductRequestDTO, type CreateProductResponseDTO } from "../types/create-product.types";
 
 export const createProductService = async (data: CreateProductRequestDTO): Promise<CreateProductResponseDTO> => {
     const response = await fetch(`${process.env.BASE_URL}/products`, {

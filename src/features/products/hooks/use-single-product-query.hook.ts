@@ -1,8 +1,9 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
+
 import { getSingleProductAction } from "../actions/single-product.action";
-import { SingleProductResponseDTO } from "../types/single-product.types";
+import { type SingleProductResponseDTO } from "../types/single-product.types";
 
 export function useSingleProductQuery(id: number) {
     return useQuery<SingleProductResponseDTO, Error>({

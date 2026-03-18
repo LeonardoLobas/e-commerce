@@ -1,6 +1,6 @@
 "use server";
 
-import { UpdateProductRequestDTO, UpdateProductResponseDTO } from "../types/update-product.types";
+import { type UpdateProductRequestDTO, type UpdateProductResponseDTO } from "../types/update-product.types";
 
 export const updateProductService = async (id: number, data: UpdateProductRequestDTO): Promise<UpdateProductResponseDTO> => {
     const response = await fetch(`${process.env.BASE_URL}/products/${id}`, {

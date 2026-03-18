@@ -1,8 +1,9 @@
 "use server";
 
-import { ActionResponse } from "@/shared/types/action-response.types";
-import { UpdateCartRequestDTO, UpdateCartResponseDTO } from "../types/update-cart.types";
+import { type ActionResponse } from "@/shared/types/action-response.types";
+
 import { updateCartService } from "../services/update-cart.service";
+import { type UpdateCartRequestDTO, type UpdateCartResponseDTO } from "../types/update-cart.types";
 
 export const updateCartAction = async (
     id: number,

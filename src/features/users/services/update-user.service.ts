@@ -1,6 +1,6 @@
 "use server";
 
-import { UpdateUserRequestDTO, UpdateUserResponseDTO } from "../types/update-user.types";
+import { type UpdateUserRequestDTO, type UpdateUserResponseDTO } from "../types/update-user.types";
 
 export const updateUserService = async (id: number, data: UpdateUserRequestDTO): Promise<UpdateUserResponseDTO> => {
     const response = await fetch(`${process.env.BASE_URL}/users/${id}`, {

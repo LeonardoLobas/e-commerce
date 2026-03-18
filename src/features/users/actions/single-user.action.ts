@@ -1,8 +1,9 @@
 "use server";
 
+import { type ActionResponse } from "@/shared/types/action-response.types";
+
 import { userFindByIdService } from "../services/single-user.service";
-import { SingleUserResponseDTO } from "../types/single-user.types";
-import { ActionResponse } from "@/shared/types/action-response.types";
+import { type SingleUserResponseDTO } from "../types/single-user.types";
 
 export async function getSingleUserAction(id: number): Promise<ActionResponse<SingleUserResponseDTO>> {
     try {

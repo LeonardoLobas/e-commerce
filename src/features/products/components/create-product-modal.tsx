@@ -1,12 +1,14 @@
 "use client";
 
-import { useCreateProductMutation } from "../hooks/use-create-product-mutation.hook";
-import { useCreateProductForm } from "../hooks/use-create-product-form.hook";
-import { CreateProductFormData } from "../schemas/create-product.schema";
+import { Package,X } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Field, FieldLabel } from "@/components/ui/field";
-import { X, Package } from "lucide-react";
+import { Input } from "@/components/ui/input";
+
+import { useCreateProductForm } from "../hooks/use-create-product-form.hook";
+import { useCreateProductMutation } from "../hooks/use-create-product-mutation.hook";
+import { type CreateProductFormData } from "../schemas/create-product.schema";
 
 interface CreateProductModalProps {
     isOpen: boolean;

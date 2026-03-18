@@ -2,9 +2,10 @@
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
+
 import { updateUserAction } from "../actions/update-user.action";
-import { UpdateUserFormData } from "../schemas/update-user.schema";
-import { UpdateUserResponseDTO } from "../types/update-user.types";
+import { type UpdateUserFormData } from "../schemas/update-user.schema";
+import { type UpdateUserResponseDTO } from "../types/update-user.types";
 
 export const useUpdateUserMutation = () => {
     const queryClient = useQueryClient();

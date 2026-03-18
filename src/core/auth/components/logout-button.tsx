@@ -1,7 +1,8 @@
 "use client";
 
-import { logoutAction } from "../actions/logout.action";
 import { useTransition } from "react";
+
+import { logoutAction } from "../actions/logout.action";
 import { useAuth } from "../hooks/use-auth.hook";
 
 export function LogoutButton() {

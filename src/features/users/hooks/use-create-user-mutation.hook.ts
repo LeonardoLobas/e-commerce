@@ -2,9 +2,10 @@
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
+
 import { createUserAction } from "../actions/create-user.action";
-import { CreateUserFormData } from "../schemas/create-user.schema";
-import { CreateUserResponseDTO } from "../types/create-user.types";
+import { type CreateUserFormData } from "../schemas/create-user.schema";
+import { type CreateUserResponseDTO } from "../types/create-user.types";
 
 export const useCreateUserMutation = () => {
     const queryClient = useQueryClient();

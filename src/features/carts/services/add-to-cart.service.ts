@@ -1,6 +1,6 @@
 "use server";
 
-import { AddToCartRequestDTO, AddToCartResponseDTO } from "../types/add-to-cart.types";
+import { type AddToCartRequestDTO, type AddToCartResponseDTO } from "../types/add-to-cart.types";
 
 export const addToCartService = async (data: AddToCartRequestDTO): Promise<AddToCartResponseDTO> => {
     const response = await fetch(`${process.env.BASE_URL}/carts`, {

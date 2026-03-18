@@ -1,11 +1,12 @@
 "use client";
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { RegisterFormData } from "../schemas/register.schema";
-import { useRegisterMutation } from "../hooks/register-mutation.hook";
+import { cn } from "@/lib/utils";
+
 import { useRegisterForm } from "../hooks/register-form.hook";
+import { useRegisterMutation } from "../hooks/register-mutation.hook";
+import { type RegisterFormData } from "../schemas/register.schema";
 
 export function SignupForm({ className, ...props }: React.ComponentProps<"form">) {
     const { mutate, isPending, isError, error } = useRegisterMutation();

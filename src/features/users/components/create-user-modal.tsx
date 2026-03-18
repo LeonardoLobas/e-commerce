@@ -1,12 +1,14 @@
 "use client";
 
-import { useCreateUserMutation } from "../hooks/use-create-user-mutation.hook";
-import { useCreateUserForm } from "../hooks/use-create-user-form.hook";
-import { CreateUserFormData } from "../schemas/create-user.schema";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Field, FieldLabel } from "@/components/ui/field";
 import { UserPlus, X } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import { Field, FieldLabel } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+
+import { useCreateUserForm } from "../hooks/use-create-user-form.hook";
+import { useCreateUserMutation } from "../hooks/use-create-user-mutation.hook";
+import { type CreateUserFormData } from "../schemas/create-user.schema";
 
 interface CreateUserModalProps {
     isOpen: boolean;

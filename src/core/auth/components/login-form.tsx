@@ -1,11 +1,12 @@
 "use client";
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { LoginFormData } from "../schemas/login.schema";
-import { useLoginMutation } from "../hooks/login-mutation.hook";
+import { cn } from "@/lib/utils";
+
 import { useLoginForm } from "../hooks/login-form.hook";
+import { useLoginMutation } from "../hooks/login-mutation.hook";
+import { type LoginFormData } from "../schemas/login.schema";
 
 export function LoginForm({ className, ...props }: React.ComponentProps<"form">) {
     const { mutate, isPending } = useLoginMutation();

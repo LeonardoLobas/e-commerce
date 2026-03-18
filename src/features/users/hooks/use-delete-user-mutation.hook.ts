@@ -2,8 +2,9 @@
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
+
 import { deleteUserAction } from "../actions/delete-user.action";
-import { DeleteUserResponseDTO } from "../types/delete-user.types";
+import { type DeleteUserResponseDTO } from "../types/delete-user.types";
 
 export const useDeleteUserMutation = () => {
     const queryClient = useQueryClient();

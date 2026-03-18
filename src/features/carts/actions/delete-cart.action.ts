@@ -1,8 +1,9 @@
 "use server";
 
-import { ActionResponse } from "@/shared/types/action-response.types";
-import { DeleteCartResponseDTO } from "../types/delete-cart.types";
+import { type ActionResponse } from "@/shared/types/action-response.types";
+
 import { deleteCartService } from "../services/delete-cart.service";
+import { type DeleteCartResponseDTO } from "../types/delete-cart.types";
 
 export const deleteCartAction = async (id: number): Promise<ActionResponse<DeleteCartResponseDTO>> => {
     try {

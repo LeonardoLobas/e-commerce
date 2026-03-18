@@ -1,6 +1,6 @@
 "use server";
 
-import { UsersListResponseDTO } from "../types/get-all-users.types";
+import { type UsersListResponseDTO } from "../types/get-all-users.types";
 
 export const usersFindAllService = async (): Promise<UsersListResponseDTO> => {
     const response = await fetch(`${process.env.BASE_URL}/users`, {

@@ -1,4 +1,4 @@
-import { DeleteProductResponseDTO } from "../types/product.types";
+import { type DeleteProductResponseDTO } from "../types/product.types";
 
 export const productDeleteService = async (id: number): Promise<DeleteProductResponseDTO> => {
     const response = await fetch(`${process.env.BASE_URL}/products/${id}`, {

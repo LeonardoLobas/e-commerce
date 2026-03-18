@@ -1,9 +1,10 @@
 "use server";
 
-import { ActionResponse } from "@/shared/types/action-response.types";
-import { UpdateUserFormData, updateUserSchema } from "../schemas/update-user.schema";
-import { UpdateUserRequestDTO, UpdateUserResponseDTO } from "../types/update-user.types";
+import { type ActionResponse } from "@/shared/types/action-response.types";
+
+import { type UpdateUserFormData, updateUserSchema } from "../schemas/update-user.schema";
 import { updateUserService } from "../services/update-user.service";
+import { type UpdateUserRequestDTO, type UpdateUserResponseDTO } from "../types/update-user.types";
 
 export const updateUserAction = async (id: number, data: UpdateUserFormData): Promise<ActionResponse<UpdateUserResponseDTO>> => {
     const validatedFields = updateUserSchema.safeParse(data);

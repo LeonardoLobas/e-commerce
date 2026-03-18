@@ -1,6 +1,7 @@
 "use client";
 
-import { createContext, useState, useEffect, ReactNode } from "react";
+import { createContext, type ReactNode,useEffect, useState } from "react";
+
 import { getCurrentUserIdAction } from "../actions/get-current-user-id.action";
 
 interface AuthContextData {

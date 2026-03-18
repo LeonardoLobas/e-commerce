@@ -1,9 +1,10 @@
 "use server";
 
-import { ActionResponse } from "@/shared/types/action-response.types";
-import { CreateUserFormData, createUserSchema } from "../schemas/create-user.schema";
-import { CreateUserResponseDTO } from "../types/create-user.types";
+import { type ActionResponse } from "@/shared/types/action-response.types";
+
+import { type CreateUserFormData, createUserSchema } from "../schemas/create-user.schema";
 import { createUserService } from "../services/create-user.service";
+import { type CreateUserResponseDTO } from "../types/create-user.types";
 
 export const createUserAction = async (data: CreateUserFormData): Promise<ActionResponse<CreateUserResponseDTO>> => {
     const validatedFields = createUserSchema.safeParse(data);

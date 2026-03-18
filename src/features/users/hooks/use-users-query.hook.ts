@@ -1,8 +1,9 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
+
 import { getAllUsersAction } from "../actions/get-all-users.action";
-import { UsersListResponseDTO } from "../types/get-all-users.types";
+import { type UsersListResponseDTO } from "../types/get-all-users.types";
 
 export const useUsersQuery = () => {
     return useQuery<UsersListResponseDTO, Error>({

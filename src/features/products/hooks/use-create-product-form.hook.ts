@@ -1,8 +1,9 @@
 "use client";
 
-import { useForm, UseFormReturn } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CreateProductFormData, createProductSchema } from "../schemas/create-product.schema";
+import { useForm, type UseFormReturn } from "react-hook-form";
+
+import { type CreateProductFormData, createProductSchema } from "../schemas/create-product.schema";
 
 export const useCreateProductForm = (): UseFormReturn<CreateProductFormData> => {
     return useForm<CreateProductFormData>({

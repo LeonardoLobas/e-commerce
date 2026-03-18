@@ -1,8 +1,9 @@
 "use client";
 
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CreateUserFormData, createUserSchema } from "../schemas/create-user.schema";
+import { useForm } from "react-hook-form";
+
+import { type CreateUserFormData, createUserSchema } from "../schemas/create-user.schema";
 
 export const useCreateUserForm = () => {
     return useForm<CreateUserFormData>({

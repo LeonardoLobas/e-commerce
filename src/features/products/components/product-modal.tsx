@@ -1,14 +1,16 @@
 "use client";
 
-import { useState } from "react";
-import { useSingleProductQuery } from "@/features/products/hooks/use-single-product-query.hook";
-import { Button } from "@/components/ui/button";
+import { Pencil,Trash2, X } from "lucide-react";
 import Image from "next/image";
-import { X, Trash2, Pencil } from "lucide-react";
+import { useState } from "react";
+
+import { Button } from "@/components/ui/button";
+import { AddToCartButton } from "@/features/carts/components/add-to-cart-button";
+import { useSingleProductQuery } from "@/features/products/hooks/use-single-product-query.hook";
+import { formatCurrency } from "@/lib/formatCurrency";
+
 import { DeleteProductModal } from "./delete-product-modal";
 import { EditProductModal } from "./edit-product-modal";
-import { AddToCartButton } from "@/features/carts/components/add-to-cart-button";
-import { formatCurrency } from "@/lib/formatCurrency";
 
 interface ProductModalProps {
     productId: number | null;

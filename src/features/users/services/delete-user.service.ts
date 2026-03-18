@@ -1,6 +1,6 @@
 "use server";
 
-import { DeleteUserResponseDTO } from "../types/delete-user.types";
+import { type DeleteUserResponseDTO } from "../types/delete-user.types";
 
 export const userDeleteService = async (id: number): Promise<DeleteUserResponseDTO> => {
     const response = await fetch(`${process.env.BASE_URL}/users/${id}`, {

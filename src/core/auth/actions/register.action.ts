@@ -1,9 +1,10 @@
 "use server";
 
-import { registerSchema, type RegisterFormData } from "../schemas/register.schema";
+import { type ActionResponse } from "@/shared/types/action-response.types";
+
+import { type RegisterFormData,registerSchema } from "../schemas/register.schema";
 import { registerUserService } from "../services/register-user.service";
 import type { RegisterResponseDTO } from "../types/auth.types";
-import { ActionResponse } from "@/shared/types/action-response.types";
 
 export async function registerUserAction(formData: RegisterFormData): Promise<ActionResponse<RegisterResponseDTO>> {
     try {

@@ -1,9 +1,10 @@
-import { toast } from "sonner";
-import { RegisterFormData } from "../schemas/register.schema";
-import { registerUserAction } from "../actions/register.action";
-import { RegisterResponseDTO } from "../types/auth.types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+
+import { registerUserAction } from "../actions/register.action";
+import { type RegisterFormData } from "../schemas/register.schema";
+import { type RegisterResponseDTO } from "../types/auth.types";
 
 export const useRegisterMutation = () => {
     const queryClient = useQueryClient();
@@ -12,14 +13,14 @@ export const useRegisterMutation = () => {
     return useMutation<RegisterResponseDTO, Error, RegisterFormData>({
         mutationKey: ["register"],
 
-        mutationFn: async (data: RegisterFormData) => {
+        mutationFn: async (data: RegisterFormData): Promise<RegisterResponseDTO> => {
             const result = await registerUserAction(data);
 
             if (!result.success) {
                 throw new Error(result.error);
             }
 
-            return result.data;
+            return result.data as RegisterResponseDTO;
         },
 
         onSuccess: () => {

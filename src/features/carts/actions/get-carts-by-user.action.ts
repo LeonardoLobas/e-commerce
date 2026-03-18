@@ -1,8 +1,9 @@
 "use server";
 
-import { ActionResponse } from "@/shared/types/action-response.types";
-import { CartListResponseDTO } from "../types/get-carts-by-user.types";
+import { type ActionResponse } from "@/shared/types/action-response.types";
+
 import { getCartsByUserService } from "../services/get-carts-by-user.service";
+import { type CartListResponseDTO } from "../types/get-carts-by-user.types";
 
 export const getCartsByUserAction = async (userId: number): Promise<ActionResponse<CartListResponseDTO>> => {
     try {

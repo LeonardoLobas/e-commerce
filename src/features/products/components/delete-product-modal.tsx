@@ -1,8 +1,10 @@
 "use client";
 
-import { useDeleteProductMutation } from "../hooks/use-delete-product-mutation.hook";
+import { Trash2, TriangleAlert,X } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
-import { X, Trash2, TriangleAlert } from "lucide-react";
+
+import { useDeleteProductMutation } from "../hooks/use-delete-product-mutation.hook";
 
 interface DeleteProductModalProps {
     isOpen: boolean;

@@ -2,8 +2,9 @@
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
+
 import { updateProductAction } from "../actions/update-product.action";
-import { UpdateProductFormData } from "../schemas/update-product.schema";
+import { type UpdateProductFormData } from "../schemas/update-product.schema";
 
 export const useUpdateProductMutation = () => {
     const queryClient = useQueryClient();

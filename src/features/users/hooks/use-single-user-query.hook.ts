@@ -1,8 +1,9 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
+
 import { getSingleUserAction } from "../actions/single-user.action";
-import { SingleUserResponseDTO } from "../types/single-user.types";
+import { type SingleUserResponseDTO } from "../types/single-user.types";
 
 export const useSingleUserQuery = (id: number) => {
     return useQuery<SingleUserResponseDTO, Error>({

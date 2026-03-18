@@ -1,9 +1,11 @@
 "use client";
 
-import Image from "next/image";
-import { ProductsResponseDTO } from "../types/get-all-products.types";
-import { formatCurrency } from "@/lib/formatCurrency";
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
+
+import { formatCurrency } from "@/lib/formatCurrency";
+
+import { type ProductsResponseDTO } from "../types/get-all-products.types";
 
 interface ProductCardProps {
     product: ProductsResponseDTO;
