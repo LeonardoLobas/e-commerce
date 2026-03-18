@@ -16,8 +16,8 @@ export const useRegisterMutation = () => {
         mutationFn: async (data: RegisterFormData): Promise<RegisterResponseDTO> => {
             const result = await registerUserAction(data);
 
-            if (!result.success) {
-                throw new Error(result.error);
+            if (!result.success || !result.data) {
+                throw new Error(result.error || "Erro inesperado ao criar conta.");
             }
 
             return result.data as RegisterResponseDTO;
